@@ -29,6 +29,8 @@
 \RequirePackage{setspace}
 \RequirePackage{marginnote}
 \RequirePackage{hyperref}
+\RequirePackage{booktabs}
+
 % Set fonts
 \setmainfont{Adobe Caslon Pro}
 \newfontfamily\headingfont[]{RobotoSlab-Regular.ttf}

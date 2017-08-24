@@ -1,0 +1,176 @@
+% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/
+% or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% !TEX TS-program = xelatex
+%!TEX root =  Waves_standalone.tex
+
+\section{Properties of waves}
+\subsection{Waves}
+Consider a periodic wave traveling with velocity $v$ and wavelength $\lambda$.\mnote{In SI units the wavelength ($\lambda$) has units of meters (\si{\meter}) and velocity ($v$) has units of \si{\meter\per\second}.
+}
+ The following quantities are defined in terms of $v$ and $\lambda$:
+\begin{itemize}
+\item Time between peaks: $T = \lambda / v, \quad [T]$ = \si{\second}.
+\item Frequency: $\nu = \frac{1}{T}=\frac{v}{\lambda},  \quad [\nu]$ = \si{\per\second}.
+\item Angular frequency: $\omega = 2\pi \nu,  \quad [\omega]$ = \si{\radian\per\second}.
+\end{itemize}
+
+In empty space light travels at the speed of light (a constant), $c = 299792458 \, \si{\meter\per\second}$.
+For light then wavelength and frequency are related by:
+\begin{equation}
+%\tcboxmath{
+\lambda \nu = c.
+%}
+\end{equation}
+
+\subsection{Blackbody radiation}
+According to classical physics, an idealized blackbody at temperature $T$ emits radiation with a given energy density
+$\rho(\nu,T)$, where $\nu$ is the frequency of the light emitted.
+The quantity $\rho(\nu,T) d\nu$ is the total energy emitted per unit volume in the range of frequencies $[\nu,\nu + d\nu]$ and is given by the expression
+\begin{equation}
+\rho(\nu,T)_\mathrm{Classical} d\nu = \frac{8 \pi k_B T}{c^3} \nu^2 d\nu \quad [\si{\joule\times\meter^{-3}}]
+\end{equation}
+where $k_B$ is the Boltzmann constant
+\begin{equation}
+k_B = \frac{R}{N_A} = 1.38 \times 10^{-23}\;\si{\joule\per\kelvin} \text{particle}^{-1}.
+\end{equation}
+
+
+\begin{exercise}
+Draw a plot of $\rho(\nu,T)_\mathrm{Classical}$ for two temperatures, $T_1$ and $T_2$ with $T_1 < T_2$.
+\end{exercise}
+\begin{exercise}
+The total energy emitted by a blackbody is given by the integral over all emitted frequencies, that is, the integral over $\nu$ from 0 to infinity of $\rho(\nu,T)_\mathrm{Classical}$.
+Evaluate this integral.
+\begin{equation}
+\int_0^\infty \rho(\nu,T)_\mathrm{Classical} d\nu 
+= \frac{8 \pi k_B T}{c^3} \int_0^\infty  \nu^2 d\nu
+= \frac{8 \pi k_B T}{c^3} \left.  \frac{\nu^3}{3}  \right|_0^\infty = \infty !
+\end{equation}
+\end{exercise}
+%\begin{example}
+%Hello
+%\end{example}
+
+The divergence of the integral that determines the total energy emitted is known as the \textbf{ultraviolet catastrophe} because it is due to the incorrect behavior of $\rho(\nu,T)_\mathrm{Classical}$ for large frequencies.
+The solution to this problem came from Max Planck (1900).
+Planck assumed that light could be describe as a set of harmonic oscillators, and that each oscillator carried only a discrete amount of energy:
+\begin{equation}
+E = n h \nu,
+\end{equation}
+where $n = 0, 1, 2, \ldots$ is a positive integer and $h$ is Planck's constant
+\begin{equation}
+h = 6.626070040(81) 10^{-34}\;\si{\joule\second}.
+\end{equation}
+Using this assumption Planck derived the following equation
+\begin{equation}
+\rho(\nu,T)_\mathrm{Planck} =  \frac{8 \pi h}{c^3} \frac{\nu^3 d\nu}{e^{h\nu/k_B T} -1},
+\end{equation}
+which shows the correct behavior.
+
+\begin{exercise}
+What is the value of $\rho(\nu,T)_\mathrm{Planck}$ for $\nu = 0$?
+Expand $\rho(\nu,T)_\mathrm{Planck}$ as a Taylor series in the variable $\nu$ centered around $\nu = 0$.
+Does this equation agree with the classical expression $\rho(\nu,T)_\mathrm{Classical}$?
+\end{exercise}
+
+\subsection{The photoelectric effect}
+The photoelectric effect, discovered by Heinrich Hertz (1887), consists in the production of electric sparks when a metal is illuminated with ultraviolet light.
+Experimentally, one finds that the kinetic energy ($K$) of the electrons emitted is given by
+\begin{equation}
+K = \begin{cases}
+0 & \text{if } h\nu - \Phi  \leq 0 \\
+h\nu - \Phi & \text{if } h\nu - \Phi  > 0,
+\end{cases}
+\end{equation}
+where $\Phi$ is called the work function and depends on the metal and $h$ is Planck's constant.
+The work function is the amount of energy required to remove an electron from the metal and create a free electron with zero kinetic energy.
+This result disagrees with a classical interpretation of the experiment, in which one assumes that the kinetic energy is proportional to the intensity of the light used in the experiment.
+
+Albert Einstein was able to explain the photoelectric effect by assuming that a photon of frequency $\nu$ carries an energy equal to
+\begin{equation}
+E = h \nu,
+\end{equation}
+and that each photon can produce only one electron.
+Using the relationship between frequency and wavelength we also can express the energy of a photon as
+\begin{equation}
+E = h \frac{c}{\lambda}.
+\end{equation}
+
+\subsection{Units and conversion factors}
+Spectroscopist use a variety of units to report energy differences.
+The wave number ($\tilde{\nu}$) is defined as the number of waves per unit length
+\begin{equation}
+\tilde{\nu} = \frac{1}{\lambda} = \frac{E}{hc}.
+\end{equation}
+so that in SI units it is measured in $\si{\per\meter}$. However, it is more convenient to express wave number in units of $\si{\per\centi\meter}$, which is done by multiplying by 0.01.
+Here are some conversion factors to remember:
+\begin{equation}
+\SI{1}{kcal\per\mole} = \SI{349.75}{\per\centi\meter}\,\mathrm{molecule}^{-1},
+\end{equation}
+and 
+\begin{equation}
+\SI{1}{\per\centi\meter}\,\mathrm{molecule}^{-1} = \SI{29979.2458}{\mega\hertz}.
+\end{equation}
+Another useful energy unit is electron volt (eV)
+\begin{equation}
+\SI{1}{\electronvolt} = (\text{charge of }e^{-})(1\si{\volt})  =  1.602\times10^{-19} \underbrace{C V}_{J} 
+=\SI{8065.54}{\per\centi\meter}.
+\end{equation}
+
+\subsection{Time scales for molecular motion}
+
+\begin{table}[htbp]
+\centering
+\caption{Regions of the Electromagnetic Spectrum} % requires the topcapt package
+   \begin{tabular}{@{} lllll @{}} % Column formatting, @{} suppresses leading/trailing space
+      \toprule
+      Region & Wavelength & Wave number & Frequency & Molecular process \\
+      \midrule
+      Microwave & 0.04--25 \si{\centi\meter} & 0.04--25 \si{\per\centi\meter} & 1.2--750 \si{\giga\Hz} & Molecular rotations \\
+Infrared & 2.5--25 \si{\micro\meter} & 400--4000  \si{\per\centi\meter} & $1.2 \times 10^{13}$--$1.2 \times 10^{14}$ \si{\Hz} & Fundamental vibrations \\
+Visible & 400--800 \si{\nano\meter} & 12500--25000  \si{\per\centi\meter} & $3.7 \times 10^{14}$--$7.5 \times 10^{14}$ \si{\Hz} & Valence electronic excitations \\
+Near ultraviolet & 10--200 \si{\nano\meter} & 25000--50000  \si{\per\centi\meter} & $7.5 \times 10^{14}$--$1.5 \times 10^{15}$ \si{\Hz} & Valence electronic excitations \\
+X-rays & 1--10 \si{\angstrom} & $10^7$--$10^8$   \si{\per\centi\meter} & $3 \times 10^{17}$--$3 \times 10^{18}$ \si{\Hz} & Ionization of inner shell electrons \\
+      \bottomrule
+   \end{tabular}
+   \label{tab:electromagnetic_spectrum}
+\end{table}
+
+Regions of the electromagnetic spectrum with the corresponding molecular transitions are reported in Table~\ref{tab:electromagnetic_spectrum}.
+
+We can estimate time scales ($\tau$) as the inverse of the frequency
+\begin{equation}
+\tau = \frac{1}{\nu} = \frac{\lambda}{c} = \frac{1}{\tilde{\nu}{c}}
+= \frac{1}{ (\tilde{\nu} \, \si{\per\cm}) \times (2.99 \times 10^{10}\si{\cm\per\second}) }
+\end{equation}
+
+Rotations
+\begin{equation}
+\tilde{\nu} = \SI{1}{\per\centi\meter} \Rightarrow \tau_\mathrm{rot} = 3.3 \times 10^{-11} \si{\per\second} = \SI{33}{\pico\second}
+\end{equation}
+
+Vibrations
+\begin{equation}
+\tilde{\nu} = \SI{2000}{\per\centi\meter} \Rightarrow \tau_\mathrm{vib} = 1.7 \times 10^{-14} \si{\per\second}
+= \SI{17}{\femto\second}
+\end{equation}
+
+Electronic orbits
+\begin{equation}
+\tilde{\nu} = \SI{40000}{\per\centi\meter} \Rightarrow \tau_\mathrm{el} = 8.3 \times 10^{-16} \si{\per\second}
+= \SI{830}{\atto\second}
+\end{equation}
+
+
+
+%\begin{example}
+%Hello
+%\end{example}
+
+
+
+
+
+
