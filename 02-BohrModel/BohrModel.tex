@@ -5,12 +5,14 @@
 % !TEX TS-program = xelatex
 %!TEX root =  BohrModel_standalone.tex
 
+\setcounter{section}{1}
 \section{The Bohr model of the hydrogen atom}
 
 \subsection{The classical model of the hydrogen atom}
 The hydrogen atom ($^1$H) is composed of two particles, an electron (with mass $m_e$) and a proton (with mass $M_p$).
-The ratio of the two masses is $M_p/m_e = 1836$, which shows that classically we can think of the hydrogen atom as a mini solar system with the proton having a fixed position in space (e.g. the origin) and the electron orbiting around it.\mnote{This approximation is not necessary, as we will see later, we can work in a set of reduced coordinates and treat both the motion of the proton and the electron.}
-In this case the energy of this system is given by the sum of the kinetic and potential energy of the electron
+The ratio of the two masses is $M_p/m_e \approx 1836$, that is, the electron is significantly lighter than the proton.
+So we will ignore the motion of the proton and assume that it has a fixed position in space, which for convenience we assume to be the origin of a 3D Cartesian coordinate system.\mnote{This approximation is not necessary, as we will see later, we can work in a set of reduced coordinates and treat both the motion of the proton and the electron.}
+In this case the classical energy expression for the electron orbiting around the proton is given by the sum of the kinetic and potential energy of the electron
 \begin{equation}
 E = \underbrace{\frac{1}{2} m_e v^2}_{\text{Kinetic energy}}
 + \underbrace{\frac{1}{4 \pi \epsilon_0} \frac{q_e q_p}{r}}_{\text{Potential energy}},
@@ -21,15 +23,15 @@ If we write the charge of the electron\mnote{Be careful to avoid confusing this 
 E = \frac{1}{2} m_e v^2 - \frac{1}{4 \pi \epsilon_0} \frac{e^2}{r},
 \end{equation}
 
-Assuming that the electron is in a stationary orbit, the force accelerating it towards the nucleus has magnitude
+Assuming that the electron is in a stationary circular orbit, the force accelerating it towards the nucleus has magnitude
 \begin{equation}
 f_a = \frac{m_e v^2}{r}.
 \end{equation}
 This force must be equal to the Coulomb force attracting the electron to the proton
 \begin{equation}
-f_c =  \frac{1}{4 \pi \epsilon_0} \frac{e^2}{r^2}
+f_c =  \frac{1}{4 \pi \epsilon_0} \frac{e^2}{r^2}.
 \end{equation}
-which gives the condition
+For a stationary orbit the force due to acceleration and the Coulomb force must match, so after equating the two expressions we get
 \begin{equation}
 \label{eq:stationary_condition}
 m_e v^2 = \frac{1}{4 \pi \epsilon_0} \frac{e^2}{r}.
@@ -38,19 +40,21 @@ Plugging this equation in the energy expression we get
 \begin{equation}
 E = \frac{1}{2} \frac{1}{4 \pi \epsilon_0} \frac{e^2}{r} - \frac{1}{4 \pi \epsilon_0} \frac{e^2}{r}= - \frac{1}{2} \frac{1}{4 \pi \epsilon_0} \frac{e^2}{r}.
 \end{equation}
+This equation relates the energy of an orbit ($E$) to the distance of the electron from the proton ($r$).
 
 \begin{exercise}
 What does the spectrum for the classical hydrogen atom look like?
 \end{exercise}
 
-\subsection{Bohr's model}
-The classical model of the hydrogen atom fails at describing the discrete nature of the spectrum.
-Bohr's solution to this problem involved postulating that certain properties of the hydrogen atom can only take certain values.\mnote{Physicist Niels Bohr (Denmark, 1885--1962).}
 \marginpar{
 \includegraphics[width=1.5in]{../Figures/Niels_Bohr.jpg}
 \captionof{figure}{Niels Bohr.}
 }
-Recall that the angular momentum of particle is defined as $\mathbf{L} = \mathbf{r} \times \mathbf{p} = m \mathbf{r} \times \mathbf{v}$.
+
+\subsection{Bohr's model}
+The classical model of the hydrogen atom fails at describing the discrete nature of the spectrum observed in experiments.
+Bohr's solution to this problem involved postulating that certain physical quantities can only take certain values.\mnote{Physicist Niels Bohr (Denmark, 1885--1962).}
+Recall that the angular momentum of particle is defined as $\mathbf{L} = \mathbf{r} \times \mathbf{p} = m \mathbf{r} \times \mathbf{v}$, where $\mathbf{r}$ is the vector position of a particle, $m$ is its mass, $\mathbf{p}$ its momentum vector, and $\mathbf{v}$ is its velocity.
 For an electron orbiting around the proton the magnitude of angular momentum is
 \begin{equation}
 L = r m_e v.
@@ -70,16 +74,22 @@ m_e \left(\frac{n\hbar}{r m_e}\right)^2 = \frac{1}{4 \pi \epsilon_0} \frac{e^2}{
 \end{equation}
 which we can write as
 \begin{equation}
+\label{eq:bohr:radius}
 r = \frac{4 \pi \epsilon_0 n^2\hbar^2}{e^2 m_e}, \quad n = 1, 2, 3, \ldots .
 \end{equation}
-These are the allowed radii for the electron in the Bohr model.
+These are the allowed values of the orbit radii for the electron in the Bohr model.
 
 We can now use this expression to determine the allowed energy levels.
-Taking the equation for $r$ and plugging it in the energy expression we get
+Taking the equation for $r$ [Eq.~\eqref{eq:bohr:radius}] and plugging it in the energy expression we get
 \begin{iequation}
-E_n = - \frac{m_e e^4}{32 n^2\hbar^2 \pi^2 \epsilon_0^2 }.
+E_n = - \frac{m_e e^4}{32 n^2\hbar^2 \pi^2 \epsilon_0^2 }, \quad n = 1, 2, 3, \ldots .
 \end{iequation}
 This equation predicts discrete energy levels, and these turn out to be remarkably accurate.
+
+\marginpar{
+\includegraphics[width=1.5in]{../Figures/Louis_de_Broglie.jpg}
+\captionof{figure}{Louis de Broglie.}
+}
 
 \subsection{Rydberg's formula}
 Next we will derive an expression (Rydberg's formula) that tells us what is the energy difference between energy levels of the hydrogen atom.
@@ -96,10 +106,7 @@ where $R_\infty$ is Rydberg's constant ($R_\infty \approx \SI{109737.31568508}{\
 
 \subsection{de Broglie's hypothesis}
 Louis de Broglie's\mnote{Physicist Louis de Broglie (France, 1892--1987).}
-\marginpar{
-\includegraphics[width=1.5in]{../Figures/Louis_de_Broglie.jpg}
-\captionof{figure}{Louis de Broglie.}
-}
+
  contribution to the understanding of the spectrum of the hydrogen atom is the hypothesis that in the same way we assign a wavelength to photons (light), we can also assign a wavelength to particles (matter).
 Starting with Einsteins's result
 \begin{equation}
@@ -118,37 +125,64 @@ de Broglie's point is that this result should be extended also to particles, so 
 \lambda = \frac{h}{p}.
 \end{iequation}
 
-Now let us consider an electron orbiting the proton.
-We require that as the electron orbits the wave associated with it must go through an integer number of oscillations every time it orbits around the proton.
-This condition is equivalent to asking that the circumference of the orbit should fit an integer number of oscillations
+We can now apply de Broglie's hypothesis to understand the quantization of angular momentum in the hydrogen atom.
+As shown in the figure below we require that as the electron orbits the de Broglie wave associated with it must go through an integer number of cycles every time it orbits around the proton. 
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=4in]{../Figures/BohrModel/deBroglieWave.pdf} % requires the graphicx package
+%   \caption{example caption}
+%   \label{fig:example}
+\end{figure}
+
+This condition is equivalent to equating the circumference of the orbit ($ 2 \pi r$) with a integer multiple of the wavelength
 \begin{equation}
 n \lambda = 2 \pi r.
 \end{equation}
-From this result and de Broglie's formula we derive
+From this result and de Broglie's formula we derive,
 \begin{equation}
 n \frac{h}{p} = 2 \pi r
 \end{equation}
-Recall the the magnitude of angular momentum for the electron orbiting is
+which may be used to find the magnitude of angular momentum for the electron
 \begin{equation}
+\label{eq:bohr:angular_momentum}
 L = r p = \frac{n h}{2 \pi}.
 \end{equation}
  This shows that the de Broglie's formula can be used to rationalize Bohr's hypothesis.
-
-\subsection{Heisenberg's uncertainty principle}
-How can better understand the dual nature (particle/wave) of matter particles like electrons?
-Heisenberg proposed a principle that says that there is an intrinsic limit to the precision with which we can measure certain physical quantities.
-\mnote{After physicist Werner Heisenberg (Germany, 1901--1976).}
-\marginpar{
+ 
+ \marginpar{
 \includegraphics[width=1.5in]{../Figures/Werner_Heisenberg.jpg}
 \captionof{figure}{Werner Heisenberg.}
 }
-For a particle moving in one dimensions, the uncertainty principle states that the uncertainty in the position ($\Delta x$) times the uncertainty in the momentum ($\Delta p$) must be greater than or equal to a constant
+
+\begin{exercise}
+What are the allowed values of $n$ in Eq.~\eqref{eq:bohr:angular_momentum}? Why?
+\end{exercise}
+
+\subsection{Heisenberg's uncertainty principle}
+How can better understand the dual nature (particle/wave) of matter particles like electrons?
+Heisenberg proposed that there is an intrinsic limit to the precision with which we can measure certain physical quantities (uncertainty principle).
+\mnote{After physicist Werner Heisenberg (Germany, 1901--1976).}
+
+For a particle moving in one dimension, the uncertainty principle states that the uncertainty in the position ($\Delta x$) times the uncertainty in the momentum ($\Delta p$) must be greater than or equal to a constant
 \begin{iequation}
 \Delta x \Delta p \geq \frac{\hbar}{2}.
 \end{iequation}
 So, if position is measured with high accuracy, then the uncertainty on the momentum of the particle will become very large.
-Note that since momentum is $p = mv$, we can write then uncertainty in the velocity as
+Similarly, if we know the momentum of an object with high accuracy, the uncertainty on the position will be come large.
+Note that since momentum is $p = mv$, we can then write the uncertainty in the position as
 \begin{equation}
-\Delta v \geq \frac{\hbar}{2 m \Delta x }.
+\Delta x \geq \frac{\hbar}{2 m \Delta v}.
 \end{equation}
-So the uncertainty principle implies that for equal $\Delta x$, lighter object have greater uncertainty in the velocity.
+So the uncertainty principle implies that for equal  uncertainty in the velocity $\Delta v$, lighter object have greater uncertainty in the position.
+In our common experience we deal with macroscopic objects whose weight is order of magnitudes larger than that of electrons and protons.
+In our common experience we deal with macroscopic objects whose weight is order of magnitudes larger than that of electrons and protons and we do not experience the wave-like nature of matter.
+For example, the uncertainty on the position of a laptop ($m \approx \SI{1}{\kilo\gram}$) falling at a speed of \SI{1}{\meter\per\second} with an uncertainty in the velocity of  \SI{0.01}{\meter\per\second} is
+\begin{equation}
+\Delta x \geq \frac{\hbar}{2 \cdot 1 \cdot 0.01} \approx 10^{-32} \si{\meter},
+\end{equation}
+which is a minuscule number. In the case of an electron ($m_e = $) we instead find that the uncertainty is much larger, of the order of a centimeter
+\begin{equation}
+\Delta x \geq \frac{\hbar}{2 \cdot 9.1 \cdot 10^{-31} \cdot 0.01} \approx 0.01 \si{\meter}.
+\end{equation}
+The uncertainty principle then explains why we do not experience the wave-like nature of macroscopic objects.
+
