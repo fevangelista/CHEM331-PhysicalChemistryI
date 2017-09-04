@@ -9,7 +9,8 @@
 \section{Complex numbers}
 
 \subsection{Definitions}
-Complex numbers are used extensively in quantum mechanics.
+Complex numbers are used extensively in quantum mechanics.\mnote{Complex numbers were originally introduced to deal with algebraic equations like $x^2 + 1 = 0$, which has no solution in the set of real numbers.
+If we define $i = \sqrt{-1}$, then we see that $i$ solves this equation as it can be easily verified: $i^2 + 1 = (\sqrt{-1})^2 + 1 = -1 + 1 = 0$.}
 A generic complex number $z$ may be written as
 \begin{equation}
 z = x + i y,
@@ -79,6 +80,25 @@ Let us compute the modulus square of a complex number in polar coordinates
 \end{equation}
 This shows that the modulus square $|z |^2$ depends only on $r$.
 Note that in this derivation we used the fact that when we take the complex conjugate of $e^{i \theta}$ we change the sign of $i$ in the exponent, and this leads to a cancellation of the exponential factors.
+
+\subsection{Differentiating complex functions}
+In quantum mechanics we occasionally have to take derivatives with respect to real variables (e.g. $x$) of a complex function $f(x)$.
+An example is the function $f(x) = x + i x^2 $, which has both a real and an imaginary part, or a function like $f(x) = e^{i x}$, which at first glance may not be obvious how to split into real and imaginary parts.
+In both cases, the common rules of differentiation apply.
+Let us consider the function $f(x) = x^2 + i x^3$. When taking its derivative with respect to $x$ we can separate the real and imaginary parts
+\begin{equation}
+\frac{d f(x)}{dx } = \frac{ d (x^2 + i x^3)}{dx} = \frac{ d x^2}{dx}  + i \frac{ d x^3}{dx} = 2x + i3 x^2.
+\end{equation}
+
+In the case of $e^{-i x}$ the derivative is instead obtained using the chain rule
+\begin{equation}
+\frac{d e^{-i x}}{dx} = - i e^{i x}.
+\end{equation}
+The process of differentiation can be generalized to higher derivatives. For example, the second derivative of $e^{i x}$ is 
+\begin{equation}
+\frac{d^2 e^{-i x}}{dx^2} = -i \frac{d e^{-i x}}{dx} = i^2 e^{i x} = - e^{i x}.
+\end{equation}
+
 
 
 %\mnote{$e^{i \theta} =\cos\theta + i\sin\theta$.}
