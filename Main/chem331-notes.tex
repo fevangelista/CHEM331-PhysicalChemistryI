@@ -1,0 +1,29 @@
+% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/
+% or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% !TEX TS-program = xelatex
+
+\documentclass{../Main/lecturenotes}
+\usepackage{subfiles}
+%\newcommand{\onlyinsubfile}[1]{#1}
+%\newcommand{\notinsubfile}[1]{}
+
+\title{Lecture Notes \\ Physical Chemistry I}
+\author{Francesco Evangelista}
+\date{August 2014}
+
+\begin{document}
+\maketitle
+%\renewcommand{\onlyinsubfile}[1]{}
+%\renewcommand{\notinsubfile}[1]{#1}
+\subfile{../01-Waves/Waves}
+
+\pagebreak
+\graphicspath{{../02-BohrModel/}}
+\subfile{../02-BohrModel/BohrModel}
+
+\pagebreak
+\subfile{../03-ComplexNumbers/ComplexNumbers}
+
+\end{document}
