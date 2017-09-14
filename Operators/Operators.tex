@@ -1,0 +1,207 @@
+% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/
+% or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% !TEX TS-program = xelatex
+
+\documentclass[../Main/chem331-notes.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{4}
+
+\section{Operators and eigenvalue equations}
+\subsection{Generalities}
+Operators are mathematical objects that transform functions.
+We have already encountered one operator, the Hamiltonian for a particle in one dimension
+\begin{equation}
+\hat{H} =  - \frac{\hbar^2}{2 m} \frac{\partial^2}{\partial x^2} + V(x).
+\end{equation}
+This contains two terms, a second derivative and a multiplicative function.
+
+Operators play an important role in quantum mechanics because for each classical physical property (observable) $O$ there is a corresponding quantum mechanical operator $\hat{O}$ that is \textbf{linear and Hermitian}
+\begin{equation}
+(\text{observable}) \; O \rightarrow \hat{O} \; (\text{operator}).
+\end{equation}
+An operator is said to be linear if for any function $f(x)$ and $g(x)$, it satisfies the condition
+\begin{equation}
+\hat{O}[c_1 f(x) + c_2 g(x)] = c_1 \hat{O} f(x) +  c_2 \hat{O} g(x).
+\end{equation}
+In other words, if an operator is linear we can apply to each term in a sum separately.
+The concept of Hermiticity is a bit more involved and we will introduce it later. For now we will take a look at various operators that we will encounter often in this course.
+
+One of the simplest operator \textbf{position operator} $\hat{x}$ which corresponds to the $x$-coordinate of a particle in one dimension
+\begin{iequation}
+\hat{x} = x ,
+\end{iequation}
+In this case the operator just multiplies the quantity onto which it is applied by the number $x$.
+
+The \textbf{momentum operator} $\hat{p}$ is related to the classical momentum $p$ and is given by
+\begin{iequation}
+\hat{p} = -i \hbar \frac{\partial}{\partial x}.
+\end{iequation}
+Admittedly, this definition is a bit odd and does not resemble the classical momentum operator.
+
+We have already encountered the \textbf{kinetic operator} $\hat{T}$, but we can now show that is related to the momentum operator from the definition of the kinetic energy. Classically we have that
+\begin{equation}
+T = \frac{1}{2} m v^2 = \frac{1}{2 m} p^2,
+\end{equation}
+and this expression translates to the case of quantum mechanics as
+\begin{equation}
+\hat{T} =  \frac{1}{2 m} \hat{p}^2 = \frac{1}{2 m} \left(  -i \hbar \frac{\partial}{\partial x} \right)^2 
+= -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}.
+\end{equation}
+
+\subsection{Eigenvalue equations}
+As we have seen before, the time-independent Schr\"{o}dinger equation is
+\begin{equation}
+\hat{H}\psi(x) = E \psi(x).
+\end{equation}
+This is a special type of equation because it tells us that when we apply the Hamiltonian operator onto the wave function we get back the wave function multiplied by a constant ($E$).
+Equations of this type are called eigenvalue equations and play a very important role in quantum mechanics.
+A general eigenvalue equation can be written as
+\begin{equation}
+\hat{O} f(x) = \lambda f(x),
+\end{equation}
+where $f(x)$ is called the \textbf{eigenfunction} of the operator $\hat{O}$ and $\lambda$ is the corresponding \textbf{eigenvalue}.
+%Note that eigenvalues and eigenfunctions form a pair
+As an example, consider the operator $\hat{O} = \frac{d}{dx}$.
+It is easy to verify that the function $f(x) = e^{\alpha x}$ is an eigenfunction of $\hat{O}$. Applying the operator to the function [$\hat{O} f(x)$] we see that the result is equal to a constant times $f(x)$
+\begin{equation}
+\hat{O} f(x) = \frac{d}{dx} e^{\alpha x} = \alpha e^{\alpha x} = \alpha f(x).
+\end{equation}
+In this case the eigenvalue corresponding to $f(x)$ is $\alpha$.
+
+It is important to be aware that eigenvalues may be degenerate, that is, there may be two or more eigenstates of a given operator with the same eigenvalues.
+For example, consider the kinetic energy operator $\hat{T} = - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2}$ and the wave functions $\psi_1(x) = e^{ikx}$ and $\psi_2(x) = e^{-ikx}$.
+These functions differ by more than a phase factor\mnote{That is we cannot find a complex number $e^{i\theta}$ such that $\psi_1(x) = e^{i\theta} \psi_2(x)$.} and thus from the point of view of quantum mechanics represent two different states of a system.
+However, it is easy to verify that both states are eigenfunctions of the kinetic operator with the same eigenvalue
+\begin{equation}
+\hat{T} \psi_1(x) = - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} e^{ikx}
+ = \frac{\hbar^2 k^2}{2m} e^{ikx},
+\end{equation}
+ \begin{equation}
+\hat{T} \psi_2(x) = - \frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} e^{-ikx}
+ = \frac{\hbar^2 k^2}{2m} e^{ikx}.
+\end{equation}
+
+
+\subsection{Operators, measurement, and expectation values}
+The eigenvalues of an operator play a very important part in quantum mechanics.
+Suppose that we are interested in measuring an observable $O$ to which corresponds the operator $\hat{O}$.
+Quantum mechanics postulates that the outcome of such a measurement is going to be an eigenvalue of $\hat{O}$ and the final state after the measurement is the eigenstate corresponding to it.\mnote{Here we assume that the eigenvalues of $\hat{O}$ are not degenerate.}
+Take for example the Hamiltonian of a particle in a potential $V(x)$ and assume that we had a way to determine all of its eigenvalues
+\begin{equation}
+\hat{H} \psi_n(x) = E_n \psi_n(x),
+\end{equation}
+where $n$ is an integer that labels the eigenvalues/eigenfunction pairs in order of increasing energy ($E_1 < E_2 < E_3 < \ldots$).
+Then if we perform a measurement of the energy the outcomes will be one of the eigenvalues of $\hat{H}$, say $E_i$.
+We can also say that after the measurement, the system wave function will be $\psi_i(x)$, which is the eigenfunction corresponding to $E_i$.
+Since the eigenvalues of the Hamiltonian can tell us which energy levels are allowed, they are one of the most important piece of information we can extract from $\hat{H}$.
+
+
+\subsection{The order of operators is important!}
+When we manipulate expressions that contain operators we have to keep in mind that the order in which operators are written does matter.
+For any pair of numbers, either real or complex, it does not matter in which order we take the product. So if $x$ and $y$ are numbers we have that
+\begin{equation}
+x y = y x.
+\end{equation}
+With commutators this is not generally true.
+Let us first define what we mean by a product of operators. If we have two operators, $\hat{A}$ and $\hat{B}$, then the product $\hat{A}\hat{B}$ is the result of applying first the operator $\hat{B}$ and then $\hat{A}$. When the product $\hat{A}\hat{B}$ is applied to a function $f(x)$ we evaluate the result as follows
+\begin{equation}
+\hat{A}\hat{B} f(x) = \hat{A} \left[\hat{B} f(x)\right]  
+\end{equation}
+
+In general for operators the commutative law does not apply
+\begin{equation}
+\hat{A}\hat{B} \neq \hat{B}\hat{A}.
+\end{equation}
+To see why the order of operators is important we consider the product of the position and momentum operators. If we apply $\hat{x} \hat{p}$ to a generic function $f(x)$ we get
+\begin{equation}
+\hat{x} \hat{p} f(x) = x \left(-i\hbar \frac{\partial}{\partial x} f(x) \right)
+= -i \hbar x \frac{\partial f(x)}{\partial x}.
+\end{equation}
+If we instead apply the same operators with the order switched ($\hat{p} \hat{x}$) we get
+\begin{equation}
+\hat{p} \hat{x} f(x) = \left(-i\hbar \frac{\partial}{\partial x}\right) \left(x  f(x) \right)
+= -i \hbar x \frac{\partial f(x)}{\partial x} -i \hbar f(x).
+\end{equation}
+The two results are clearly not the same.
+We are often interested in the difference $\hat{A}\hat{B} - \hat{B}\hat{A}$, which tells us if two operators commute. Because this quantity will appear several times we define a new symbol for it, the commutator, defined as
+\begin{equation}
+[\hat{A},\hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A}.
+\end{equation}
+In the case of $\hat{x}$ and $\hat{p}$ the commutator can be easily found by applying the commutator to a generic function
+\begin{equation}
+[\hat{x},\hat{p}] f(x) = \hat{x} \hat{p} f(x) - \hat{p} \hat{x} f(x) = i \hbar f(x).
+\end{equation}
+Since $f(x)$ is general, we conclude that $[\hat{x},\hat{p}] = i \hbar$.
+As we will see later, this commutator is related to the uncertainty principle and to whether or not it is possible to measure position and momentum simultaneously.
+
+\subsection{Hermitian operators}
+An operator $\hat{A}$ is said to be Hermitian if for every pair of functions $f(x)$ and $g(x)$ it satisfies the integral condition
+\begin{equation}
+\int_\text{all space} f^*(x) \hat{A} g(x) \, dx = \int_\text{all space} [\hat{A} f(x)]^*  g(x) \, dx.
+\end{equation}
+Note that if we manipulate the r.h.s we can write this also as
+\begin{equation}
+\int_\text{all space} f^*(x) \hat{A} g(x) \, dx = \left[\int_\text{all space} g(x)^* \hat{A} f(x)   \, dx \right]^*.
+\end{equation}
+Hermitian operators are somewhat magic, because when we compute an integral like the one above we can apply them to either functions $f$ or $g$.
+
+Hermitian operators are even more special, because their eigenvalues and eigenfunctions satisfy special properties
+\begin{ibox}
+\begin{myitems}
+\item The eigenvalues of Hermitian operators are \textbf{real}. This is important because in quantum mechanics eigenvalues correspond to the results of measuring the value of a physical observable. This condition then guarantees that all observables are real. Imagine if we measured the position of a particle and quantum mechanics told us that it could be a complex number, how would we interpret that result?
+\item The eigenvectors of Hermitian operators are \textbf{orthogonal}. Orthogonality is another property of integrals of functions. This conditions says that if $f(x)$ and $g(x)$ are eigenfunctions of $\hat{A}$, then the integral of $f^*(x)g(x)$ is zero
+\begin{equation}
+\int_\text{all space} f^*(x) g(x) \, dx = 0.
+\end{equation}
+Note that orthogonality of functions is a concept related to the orthogonality of vectors. Recall that two vectors $\mathbf{a} = (a_x, a_y, a_z)$ and $\mathbf{b} = (b_x, b_y, b_z)$ are said to be orthogonal if their dot product is zero
+\begin{equation}
+\mathbf{a} \cdot \mathbf{b} = a_x b_x + a_y b_y + a_z b_z = 0.
+\end{equation}
+Now we could write this condition as a sum over product of component of $\mathbf{a}$ and $\mathbf{b}$
+\begin{equation}
+\sum_{i = 1}^{3} a_i b_i = 0,
+\end{equation}
+and we can similarly rewrite the orthogonality condition as a sum of products of component of a vector
+\begin{equation}
+\int_a^b f^*(x) g(x) \, dx = \lim_{\Delta x \rightarrow 0} \sum_{k = -\infty}^{\infty} f^*(x_k) g(x_k) \Delta x
+=\lim_{\Delta x \rightarrow 0}  \Delta x \sum_{k = -\infty}^{\infty} f^*_k g_k,
+\end{equation}
+where the the points $x_k$ form a uniform grid with spacing $\Delta x$, $x_k = k  \Delta x$.
+
+\end{myitems}
+\end{ibox}
+
+\begin{exercise}
+How is orthogonality of wave functions connect to their nodal structure?
+\end{exercise}
+\begin{exercise}
+Show that the momentum operator is Hermitian.
+\end{exercise}
+To prove that the momentum operator is Hermitian we have to show that
+\begin{equation}
+\label{eq:operators:momentum}
+\int_\text{all space} f^*(x) \hat{p} g(x) \, dx = \int_\text{all space} [\hat{p} f(x)]^*  g(x) \, dx.
+\end{equation}
+Expand the momentum operator
+\begin{equation}
+\int_\text{all space} f^*(x) \hat{p} g(x) \, dx =
+\int_\text{all space} f^*(x) \left(-i \hbar \frac{d}{dx}\right) g(x) \, dx 
+= -i \hbar \int_\text{all space} f^*(x)  \frac{d g(x)}{dx}  \, dx .
+\end{equation}
+We can now apply integration by parts to the last integral
+\begin{equation}
+-i \hbar \int_\text{all space} f^*(x)  \frac{d g(x)}{dx}  \, dx 
+= -i \hbar \left. f^*(x) g(x)\right|_\text{boundary}  \, dx  +i \hbar \int_\text{all space}  \frac{d f^*(x)}{dx} g(x)  \, dx .
+\end{equation}
+The first term on the r.h.s. is the product $f^*(x) g(x)$ evaluated at the boundary, which is zero.\mnote{The proof of this is a bit involved and for now we will just take it as a fact that the wave function is either null at the boundary or this term is zero because the wave function is periodic.}
+We can manipulate the last term further and write it as
+\begin{equation}
++i \hbar \int_\text{all space}  \frac{d f^*(x)}{dx} g(x)  \, dx
+=  \int_\text{all space}  \frac{i \hbar d f^*(x)}{dx} g(x)  \, dx
+=  \int_\text{all space}  \left[\frac{-i \hbar d f(x)}{dx}\right]^* g(x)  \, dx,
+\end{equation}
+which is just the r.h.s. of Eq.~\eqref{eq:operators:momentum}.
+\end{document}
