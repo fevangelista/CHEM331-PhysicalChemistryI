@@ -1,0 +1,139 @@
+% !TEX TS-program = xelatex
+%!TEX root =  ../3dbox_standalone.tex
+
+\section{The particle in a three-dimensional box}
+\subsection{The Schr\"{o}dinger equation in three dimensions}
+How do we generalize the Schr\"{o}dinger equation to more than one dimension, say in three dimensions?
+A point in three dimensions is specified by a vector $\mathbf{r} = (x,y,z)$.
+Wave functions for particles that move in three dimensions will then have to depend on all of these three variables
+\begin{equation}
+\psi(x) \rightarrow \psi(x,y,z).
+\end{equation}
+The wave function $\psi(x,y,z)$ is now a complex function that depends on multiple variables.
+As we will see, this introduces several complications that will require some advanced mathematical techniques.
+
+Operators for a particle in three dimensions will also become vectors.
+For example, the position operator $\hat{x}$ becomes
+\begin{equation}
+\hat{x} \rightarrow \hat{\mathbf{r}} = (\hat{x}, \hat{y}, \hat{z}),
+\end{equation}
+where $\hat{x}$, $\hat{y}$, and $\hat{z}$ are position operators for the x, y, and z axes, respectively.
+Similarly, the momentum operator will become a vector
+\begin{equation}
+\hat{p} \rightarrow \hat{\mathbf{p}} =  (\hat{p}_{x}, \hat{p}_{y}, \hat{p}_{z})
+= \left(-i\hbar\frac{\partial}{\partial x}, -i\hbar\frac{\partial}{\partial y}, -i\hbar\frac{\partial}{\partial z}\right).
+\end{equation}
+When we write the kinetic energy operator in three dimensions we have to keep into account that it comes from the square of the momentum operator vector
+\begin{equation}
+\hat{T} = \frac{\hat{\mathbf{p}}^2}{2m}
+= \frac{\hat{\mathbf{p}} \cdot \hat{\mathbf{p}}}{2m} 
+= \frac{\hat{p}_{x}^2 + \hat{p}_{y}^2 + \hat{p}_{z}^2}{2m} 
+= -\frac{\hbar^2}{2m}
+\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \right) = -\frac{\hbar^2}{2m}\nabla^2.
+\end{equation}
+Here we have expanded the square of the momentum operator as we would do with any vector by summing the square of each component.
+In the last term we have written the kinetic operator using the Laplacian operator.\mnote{
+The Laplacian is the sum of partial second derivatives, $\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}$. In other words, the Laplacian is the divergence ($\nabla \cdot$) of the gradient $\nabla$, that is $\nabla^2 = \nabla \cdot \nabla$.}
+
+The total Hamiltonian in three dimension is the sum of the kinetic operator plus a potential operator that depends on all thee coordinates ($\hat{V}(x,y,z)$)
+\begin{iequation}
+\hat{H} = -\frac{\hbar^2}{2m}
+\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \right) + \hat{V}(x,y,z).
+\end{iequation}
+
+\subsection{A theorem on separable Hamiltonians}
+How can we deal with the Hamiltonian in three dimensions?
+Here we will take a look at a method that allows us to simplify the solution of problems in more than one dimension when the Hamiltonian is \textbf{separable}.
+Consider the simpler case of a particle in two dimensions $(x,y)$ and suppose that the Hamiltonian is separable into two Hamiltonians that depend on only one of these two variables
+\begin{equation}
+\hat{H} = \hat{H}_x + \hat{H}_y. 
+\end{equation}
+In this case, if we know how to solve the Schr\"{o}dinger equation for each individual Hamiltonian $\hat{H}_x$ and $\hat{H}_y$, then we can easily find the solutions to the full Hamiltonian $\hat{H}$.
+Suppose that we know the eigenvalues/eigenfunctions of $\hat{H}_x$ and $\hat{H}_y$
+\begin{align}
+\hat{H}_x \psi_x(x) &= E_x \psi_x(x), \\
+\hat{H}_y \psi_y(y) &= E_y \psi_y(y),
+\end{align}
+then the eigenvalue ($E$) and eigenfunction [$\psi(x,y)$] of the full Hamiltonian $\hat{H}$ are given by
+\begin{align}
+E &= E_x + E_y, \\
+\psi(x,y) &= \psi_x(x) \psi_y(y).
+\end{align}
+
+To see that $\psi(x,y) = \psi_x(x) \psi_y(y)$ is an eigenfunction of the full Hamiltonian we plug it in the Schr\"{o}dinger equation
+\begin{equation}
+\begin{split}
+\hat{H} \psi(x,y) =& \hat{H}  \psi_x(x) \psi_y(y) \\
+ =& (\hat{H}_x + \hat{H}_y)\psi_x(x) \psi_y(y) \\
+=& \hat{H}_x\psi_x(x) \underbrace{\psi_y(y)}_{\text{independent of } x} + \hat{H}_y\psi_x(x) \psi_y(y) \\
+=& \psi_y(y) \underbrace{\hat{H}_x\psi_x(x)}_{E_x\psi_x(x)} + \psi_x(x) \hat{H}_y \psi_y(y) \\
+=& E_x \psi_y(y)\psi_x(x) + E_y \psi_x(x)  \psi_y(y) \\
+=& (E_x + E_y) \psi_x(x)  \psi_y(y) = (E_x + E_y) \psi(x,y).
+\end{split}
+\end{equation}
+In the end we find out that $\psi(x,y) = \psi_x(x) \psi_y(y)$ is indeed an eigenfunction of the Hamiltonian and that the corresponding eigenvalue is $E_x + E_y$.
+
+\subsection{The particle in a three-dimensional box}
+Now we are ready to study the case of a particle in a three-dimensional box.
+We will assume that the box is rectangular and has edge lengths equal to $L_x$, $L_y$, and $L_z$.
+In this case, the potential operator is given by
+\begin{equation}
+\hat{V}(x,y,z)  =
+\begin{cases}
+0 & \text{if}\quad 0 \leq x \leq L_x, 0 \leq y \leq L_y, 0 \leq z \leq L_z \\
+\infty & \text{otherwise}.
+\end{cases}
+\end{equation}
+The wave function also has to satisfy the following condition
+\begin{equation}
+\psi(x,y,z) = 0 \quad \text{for } (x,y,z) \text{ outside the box},
+\end{equation}
+and by demanding that the wave function is continuous we obtain the boundary condition
+\begin{equation}
+\psi(x,y,z) = 0 \quad \text{for } (x,y,z) \text{ on the borders of the box}.
+\end{equation}
+When can then focus only on what happens inside the box and write the Hamiltonian
+\begin{equation}
+\hat{H} = -\frac{\hbar^2}{2m}
+\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \right) = \hat{T}_x + \hat{T}_y + \hat{T}_z,
+\end{equation}
+where $\hat{T}_x$ is the kinetic energy operator for a particle in the $x$ dimension.
+Note that this Hamiltonian separates into three independent terms,  $\hat{T}_x$, $\hat{T}_y$, and $\hat{T}_z$, of which we know eigenvalues and eigenfunctions.
+In the case of the $x$ coordinate we have the eigenfunctions [$\psi_{n_x}(x)$] and eigenvalues ($E_{n_x}$)
+\begin{equation}
+\begin{split}
+\psi_{n_x}(x) &= \sqrt{\frac{L_x}{2}} \sin \left(\frac{n_x \pi x}{L_x}\right) \\
+E_{n_x} &= \frac{h^2 n_x^2}{8mL_x^2},
+\end{split}
+\end{equation}
+where $n_x = 1, 2, \ldots$ is the particle in a box quantum number for the $x$ dimension.
+Similar equations can be written for the $y$ and $z$ components of the Hamiltonian.
+
+If we apply the theorem on separable Hamiltonians we get that the total wave function is the product of solutions for the $x$, $y$, and $z$ directions
+\begin{iequation}
+\begin{split}
+\psi_{n_x,n_y,n_z}(x,y,z) =&  \psi_{n_x}(x) \psi_{n_y}(y) \psi_{n_z}(z) \\
+=& \sqrt{\frac{8}{L_x L_y L_z}}  \sin \left(\frac{n_x \pi x}{L_x}\right)  \sin \left(\frac{n_y \pi y}{L_y}\right)  \sin \left(\frac{n_z \pi z}{L_z}\right),
+\end{split}
+\end{iequation}
+while the total energy is given by
+\begin{iequation}
+E_{n_x,n_y,n_z} = E_{n_x} + E_{n_y} + E_{n_z} = \frac{h^2}{8m} \left( 
+\frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} + \frac{n_z^2}{L_z^2} \right).
+\end{iequation}
+
+\subsection{Energy levels of a cubic box}
+For a cubic box
+\begin{equation}
+L_x = L_y = L_z = L
+\end{equation}
+and the energy expression simplifies to
+\begin{iequation}
+E_{n_x,n_y,n_z} = \frac{h^2}{8mL^2} (n_x^2 + n_y^2 + n_z^2).
+\end{iequation}
+
+
+
+
+
+

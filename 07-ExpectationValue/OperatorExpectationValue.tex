@@ -1,0 +1,161 @@
+% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/
+% or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% !TEX TS-program = xelatex
+
+\documentclass[../Main/chem331-notes.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{6}
+
+\section{Expectation value of operators}
+\subsection{Average outcome of many measurements}
+Quantum mechanics does not allow us to predict the outcome of the measurement of an observable.
+For example, if we measure the position of the particle in a box prepared in the eigenstate $\psi_{n}(x)$, we know we will get positions distributes according to the probability distribution
+\begin{equation}
+\rho(x) = |\psi_{n}(x)|^2 = \frac{2}{L} \sin^2 \left(\frac{n \pi x}{L}\right).
+\end{equation}
+However, we cannot predict the outcome of each measurement of the position done in an experiment.
+
+One piece of information that we can extract from the wave function is the average outcome of many measurements.
+Suppose we have prepared $N$ replicas of the quantum state $\psi(x)$ and on each systems we perform a measurement of the position, recording each measurement, which we denote as $x_k$, with $k = 1, 2, \ldots, N$. Then the average value of $x$---indicated with the symbol $\langle \hat{x} \rangle$---is given by
+\begin{equation}
+\langle \hat{x} \rangle = \frac{x_1 + x_2 + \ldots + x_N}{N}  =\frac{\sum_{k = 1}^N x_k}{N}.
+\end{equation}
+It turns out that we can also compute $\langle \hat{x} \rangle$ from the wave function $\psi(x)$ directly as
+\begin{equation}
+\langle \hat{x} \rangle =  \int_\text{all space} \psi^*(x) \hat{x} \psi(x) \, dx.
+\end{equation}
+We call this the \textbf{expectation value of the operator} $\hat{x}$.
+For a generic operator $\hat{A}$ we write the expectation value as
+\begin{iequation}
+\langle \hat{A} \rangle =  \int_\text{all space} \psi^*(x) \hat{A} \psi(x) \, dx.
+\end{iequation}
+
+For example, let us compute the expectation value of the position operator for an eigenstate $\psi_{n}(x)$ of the particle in a box Hamiltonian. We have to evaluate the integral
+\begin{equation}
+\langle \hat{x} \rangle
+= \int_0^L \sqrt{\frac{2}{L}} \sin \left(\frac{n \pi x}{L}\right) x \sqrt{\frac{2}{L}} \sin \left(\frac{n \pi x}{L}\right) \, dx
+= \int_0^L x \frac{2}{L} \sin^2 \left(\frac{n \pi x}{L}\right) \, dx.
+\end{equation}
+\begin{exercise}
+Evaluate $\langle \hat{x} \rangle$ for the particle in a box. 
+\end{exercise}
+
+Similarly, the average momentum of a particle in a box is given by
+\begin{equation}
+\begin{split}
+\langle \hat{p} \rangle
+&= \int_0^L \sqrt{\frac{2}{L}} \sin \left(\frac{n \pi x}{L}\right) \left( -i \hbar \frac{\partial}{\partial x} \right) \sqrt{\frac{2}{L}} \sin \left(\frac{n \pi x}{L}\right) \, dx \\
+&= -i \hbar \frac{2}{L}  \int_0^L \sin \left(\frac{n \pi x}{L}\right) \frac{\partial}{\partial x} \sin \left(\frac{n \pi x}{L}\right)\, dx \\
+&= -i \hbar \frac{2}{L} \frac{n \pi}{L}  \int_0^L \sin \left(\frac{n \pi x}{L}\right) \cos \left(\frac{n \pi x}{L}\right)\, dx \\
+& = 0.
+\end{split}
+\end{equation}
+To show that the last integral is zero introduce the quantity
+\begin{equation}
+\theta = \frac{n \pi x}{L},
+\end{equation}
+which allows us to rewrite\mnote{Here we use the integral $\int \sin(\theta) \cos(\theta)\, d\theta = -\frac{1}{4} \cos(2 \theta) + C$.}
+\begin{equation}
+\frac{n \pi}{L} \int_0^L \sin \left(\frac{n \pi x}{L}\right) \cos \left(\frac{n \pi x}{L}\right)\, dx 
+= \int_0^{n \pi} \sin(\theta) \cos(\theta)\, d\theta 
+= \left.-\frac{1}{4} \cos(2 \theta) \right|^{n\pi}_{0}  = 0.
+\end{equation}
+
+\subsection{Uncertainty in the outcome of a measurement}
+We can further characterize the distribution of measurements in an experiment by calculating the variance or standard deviation of an observable.
+For example, the standard deviation for a series of $N$ measurement of the position is computed from statistics as
+\begin{equation}
+\sigma_x = \sqrt{ \frac{(x_1 - \langle \hat{x} \rangle)^2 + (x_2 - \langle \hat{x} \rangle)^2 +  \ldots + (x_N - \langle \hat{x} \rangle)^2 }{N} } = \sqrt{ \frac{1}{N} \sum_{k = 1}^{N} (x_i - \langle \hat{x} \rangle)^2}
+\end{equation}
+In quantum mechanics we evaluate this quantity as the expectation value of the operator that measures the deviation of the position from the average $(\hat{x} - \langle \hat{x} \rangle)^2$
+\begin{equation}
+\sigma^2_x 
+=\langle (\hat{x} - \langle \hat{x} \rangle)^2 \rangle =  \int_\text{all space} \psi^*(x) (\hat{x} - \langle \hat{x} \rangle)^2 \psi(x) \, dx.
+\end{equation}
+Note that in this expression $\langle \hat{x} \rangle$ is just a number.
+For a generic operator $\hat{A}$ we write the square of the standard deviation as
+\begin{iequation}
+\sigma^2_A
+=\langle (\hat{A} - \langle \hat{A} \rangle)^2 \rangle
+= \int_\text{all space} \psi^*(x) (\hat{A} - \langle \hat{A} \rangle)^2 \psi(x) \, dx.
+\end{iequation}
+It is not difficult to show that this equation is equivalent to
+\begin{equation}
+\sigma^2_A
+=\langle \hat{A}^2 \rangle - \langle \hat{A} \rangle^2
+= \int_\text{all space} \psi^*(x) \hat{A}^2 \psi(x) \, dx
+- \left[\int_\text{all space} \psi^*(x) \hat{A} \psi(x) \, dx\right]^2,
+\end{equation}
+that is, the difference between the average value of $\hat{A}^2$ minus the square of the average value of $\hat{A}$.
+
+\subsection{Uncertainty in the measurement of an eigenstate}
+Suppose that a particle in a box is in an eigenstate of the Hamiltonian, $\psi_n(x)$, and ask: What is the average and uncertainty in the energy?
+The average energy for state $\psi_n(x)$ is given by
+\begin{equation}
+\langle \hat{H} \rangle =  \int_\text{all space} \psi_n^*(x) \hat{H} \psi_n(x) \, dx,
+\end{equation}
+and we can now use the fact that $\psi_n(x)$ is an eigenstate of $\hat{H}$ with eigenvalue $E_n$,
+\begin{equation}
+\hat{H} \psi_n(x) = E_n \psi_n(x),
+\end{equation}
+to simplify this integral
+\begin{equation}
+\langle E \rangle = \langle \hat{H} \rangle =  \int_\text{all space} \psi_n^*(x) E_n \psi_n(x) \, dx 
+=  E_n \underbrace{\int_\text{all space} \psi_n^*(x) \psi_n(x) \, dx}_{= 1} = E_n.
+\end{equation}
+In the last step we used the fact that the wave function is normalized to simplify the integral.
+This results tells us that the average measurement will given an energy equal to $E_n$.
+The standard deviation in the energy we measure is given by
+\begin{equation}
+\sigma^2_E
+= \int_\text{all space} \psi_n^*(x) (\hat{H} - \langle \hat{H} \rangle)^2 \psi_n(x) \, dx.
+\end{equation}
+Note that the quantity inside the integral is zero
+\begin{equation}
+(\hat{H} - \langle \hat{H} \rangle)^2 \psi_n(x) = (\hat{H} - \langle \hat{H} \rangle) (\hat{H} - \langle \hat{H} \rangle)\psi_n(x) = (\hat{H} - \langle \hat{H} \rangle) \underbrace{\left[\hat{H} \psi_n(x) - E_n \psi_n(x)\right]}_{= 0},
+\end{equation}
+and hence, 
+\begin{equation}
+\sigma^2_E = 0
+\end{equation}
+This result tells us that there is no uncertainty when we measure the energy of an eigenstate, since every time we measure the energy we get as a result $E_n$.
+
+\subsection{Superposition of states and measurements}
+What happens when we measure the energy of a system that is not in an eigenstate of the Hamiltonian?
+
+One of the postulates of quantum mechanics says that if we have some generic state $\phi(x)$ that is not an eigenstate of the Hamiltonian, we can always represent this state as a combination of eigenstates of $\hat{H}$. For example, in the case of the particle in a box we can write
+\begin{equation}
+\phi(x) = \sum_{n = 0}^\infty c_n \psi_n(x),
+\end{equation}
+where the numbers $c_n$ are complex and are often referred to as expansion coefficients or just coefficients.
+These coefficients have norm less or equal to one
+\begin{equation}
+|c_n|^2 \leq 1 \quad \forall n,
+\end{equation}
+and their sum is equal to one
+\begin{equation}
+\sum_{n = 0}^\infty |c_n|^2 = 1.
+\end{equation}
+Quantum mechanics tells us that when we measure the energy of state $\phi(x)$ we will get as a result one of the eigenvalues of the Hamiltonian.
+However, if we know the expansion coefficients of $\phi(x)$ we can say something more.
+Indeed, the probability of measuring the energy $E_n$ is equal to the modulus square of the coefficient for eigenstate $\psi_n(x)$
+\begin{equation}
+\text{Probability of measuring } E_n = P_n = |c_n|^2.
+\end{equation}
+For example, consider the state
+\begin{equation}
+\phi(x) = \underbrace{\frac{1}{\sqrt{2}}}_{c_1} \psi_1(x) \underbrace{- i \frac{1}{\sqrt{2}}}_{c_3} \psi_3(x).
+\end{equation}
+Here we can immediately identify the coefficient for each state. We have $c_1 = \frac{1}{\sqrt{2}}$ and $c_3 = - i \frac{1}{\sqrt{2}}$, and all other coefficients are zero, $c_2 = c_4 = \ldots = 0$.
+What is the probability of measuring $E_1$ and $E_3$? We can compute these quantities by taking the square of the wave function coefficients
+\begin{equation}
+\begin{split}
+P_1 &= \left|\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2},\\
+P_3 &= \left|-i\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2}.
+\end{split}
+\end{equation}
+
+\end{document}
