@@ -1,0 +1,122 @@
+% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/
+% or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% !TEX TS-program = xelatex
+
+\documentclass[../Main/chem331-notes.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{5}
+
+\section{The particle in a one-dimensional box}
+\subsection{Potential and boundary conditions}
+Consider a particle of mass $m$ in a one-dimensional box of length $L$.
+A potential that models the walls of a box must not allow the particle to get out of the range $0 \leq x \leq L$.
+One way to achieve this is with a potential that is infinite outside the box
+\begin{equation}
+V(x) =
+\begin{cases}
+0 & \text{if}\quad 0 \leq x \leq L \\
+\infty & \text{if}\quad  x < 0 \text{ or } x > L.
+\end{cases}
+\end{equation}
+A wave function that describe the particle in the box must satisfy $\psi(x) = 0$ if $x$ is outside the box.
+Because the wave function must be continuous, the value of $\psi(x)$ at the walls must also be zero.
+It follows then that
+\begin{iequation}
+\psi(0) = \psi(L) = 0.
+\end{iequation}
+This is an example of \textbf{boundary conditions}.\mnote{Boundary conditions are a set of constraints considered when solving a differential equation.}
+
+\subsection{Schr\"{o}dinger equation}
+We can now write the Schr\"{o}dinger equation for the particle in a one-dimensional box.
+We only consider points inside the box. In this case the Hamiltonian is given by
+\begin{equation}
+\hat{H} = -\frac{\hbar^2}{2m} \frac{d^2}{dx^2}.
+\end{equation}
+Note that the potential inside the box is zero.
+
+The Schr\"{o}dinger equation is given by
+\begin{equation}
+-\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \psi(x) = E \psi(x).
+\end{equation}
+This is a homogeneous second-order differential equation and its solution is known
+\begin{equation}
+\psi(x) = A \cos(kx) + B \sin(kx),
+\end{equation}
+and the constants $A$, $B$, and $k$ must be determined by imposing the boundary conditions.
+We can very that this is a solution to the Schr\"{o}dinger equation  by plugging it in
+\begin{equation}
+-\frac{\hbar^2}{2m} \frac{d^2}{dx^2} \left[ A \cos(kx) + B \sin(kx) \right]
+= \underbrace{\frac{\hbar^2 k^2}{2m}}_{E} \left[ A \cos(kx) + B \sin(kx) \right].
+\end{equation}
+We indeed see that once we apply the Hamiltonian we get back the same function times a number, which is the eigenvalue
+\begin{equation}
+E = \frac{\hbar^2 k^2}{2m}
+\end{equation}
+Imposing $\psi(x = 0) = 0$ we get
+\begin{equation}
+\psi(0) = A \cos(0) + B \sin(0) = A = 0,
+\end{equation}
+which implies that $A$ must be zero.
+Imposing $\psi(x = L) = 0$ we get
+\begin{equation}
+\psi(L) = B \sin(k L) = 0.
+\end{equation}
+Recall that $\sin(x) = 0$ if $x = n \pi$ where $n$ is an integer $n= 0, \pm 1, \pm 2, \ldots$.
+It follows that $k L = n \pi$, in other words
+\begin{iequation}
+k=\frac{n \pi}{L}
+\end{iequation}
+Notice that this condition imposes that $k$ is quantized.
+Quantization is a consequence of the fact that we imposed boundary conditions on the Schr\"{o}dinger equation.
+Now if we plug this solution in the wave function we get
+\begin{equation}
+\psi_{n}(x) = B \sin\left(\frac{n \pi x}{L}\right).
+\end{equation}
+Note that the solution with $-n$ is equivalent because it only differs in the sign\mnote{Recall our discussion of equivalent wave functions and phase factors?}
+\begin{equation}
+\psi_{-n}(x) = B \sin\left(\frac{-n \pi x}{L}\right) = - B \sin\left(\frac{n \pi x}{L}\right) = -\psi_{n}(x).
+\end{equation}
+Of these two equivalent solutions we can discard those with negative integers $n$.
+Also, notice that when $n$ we get a very sad solution
+\begin{equation}
+\psi_{0}(x) = B \sin\left(\frac{0 \pi x}{L}\right)  = 0.
+\end{equation}
+As we discussed before, this is not a good solution because there is no way we can normalize it.
+These considerations leaves us with the following value of the quantum number $n$
+\begin{iequation}
+n = 1,2,3,\ldots
+\end{iequation}
+
+\begin{exercise}
+Draw the energy spectrum of the particle in the box model.
+\end{exercise}
+
+\subsection{Energy}
+We can now derive an expression for the energy
+\begin{equation}
+E = \frac{\hbar^2 k^2}{2m} = \frac{\hbar^2 n^2 \pi^2}{2m L^2} = \frac{h^2 n^2 }{8 m L^2}, \quad n = 1,2,3\ldots
+\end{equation}
+
+\subsection{Wave function}
+Next, we should check if the wave function is normalized.
+To do this, we compute the integral of the wave function probability density\mnote{Here we need the integral $\int \sin(x)^2 dx = \frac{x}{2} - \frac{1}{4} \sin(2 x) + C$.}
+\begin{equation}
+\int_0^L dx\,|\psi_{n}(x)|^2 = |B|^2 \int_0^L dx\,\sin^2\left(\frac{n \pi x}{L}\right)
+=  |B|^2 \frac{L}{2}
+\end{equation}
+This wave function is not normalized because the quantity $|B|^2 \frac{L}{2}$ is generally not equal to one.
+However, we can pick a value of $B$ that makes the wave function normalized.
+As you can easily verify, if we set $B = \sqrt{\frac{2}{L}}$ then the wave function is normalized.
+We finally arrive at the normalized expression for the wave function
+\begin{iequation}
+\psi_{n}(x) = \sqrt{\frac{2}{L}} \sin\left(\frac{n \pi x}{L}\right).
+\end{iequation}
+\begin{exercise}
+Draw the first four wave functions and corresponding probability distributions for the particle in a box model.
+Where is the probability of finding the particle highest and the lowest?
+\end{exercise}
+\end{document}
+
