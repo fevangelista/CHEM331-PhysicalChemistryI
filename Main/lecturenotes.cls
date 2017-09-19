@@ -17,6 +17,7 @@
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
 \RequirePackage{tikz} % Required for drawing custom shapes
+\RequirePackage{tikzsymbols}
 
 % Typography
 \RequirePackage{fontspec}
