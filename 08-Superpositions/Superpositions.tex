@@ -14,7 +14,7 @@
 Quantum mechanics postulates that if we have some generic state $\phi(x)$ that is not an eigenstate of the Hamiltonian, we can always represent is as a combination of eigenstates of the Hamiltonian operator $\hat{H}$, $\psi_n(x)$.\mnote{We can actually use eigenstates of any Hermitian operator, e.g., $\hat{p}$.} For example, in the case of the particle in a box we can write
 \begin{equation}
 \label{eq:super:superposition}
-\phi(x) = \sum_{n = 0}^\infty c_n \psi_n(x) = \sum_{n = 0}^\infty c_n \sqrt{\frac{2}{L}} \sin\left(\frac{n \pi x}{L}\right),
+\phi(x) = \sum_{n = 1}^\infty c_n \psi_n(x) = \sum_{n = 1}^\infty c_n \sqrt{\frac{2}{L}} \sin\left(\frac{n \pi x}{L}\right),
 \end{equation}
 where the numbers $c_n$ are complex and are often referred to as expansion coefficients or just coefficients.
 These coefficients must have norm less or equal to one
@@ -23,7 +23,7 @@ These coefficients must have norm less or equal to one
 \end{equation}
 and their sum must be equal to one
 \begin{equation}
-\sum_{n = 0}^\infty |c_n|^2 = 1.
+\sum_{n = 1}^\infty |c_n|^2 = 1.
 \end{equation}
 Quantum mechanics tells us that when we measure the energy of state $\phi(x)$ we will get as a result one of the eigenvalues of the Hamiltonian.
 However, if we know the expansion coefficients of $\phi(x)$ we can say something more.
@@ -50,7 +50,7 @@ This result generalizes to any Hermitian operator $\hat{A}$. Suppose we know the
 \end{equation}
 then a generic wave function $\phi(x)$ may be expanded as
 \begin{equation}
-\phi(x) = \sum_{n = 0}^\infty c_n f_n(x),
+\phi(x) = \sum_{n = 1}^\infty c_n f_n(x),
 \end{equation}
  and the probability that a measurement of $\hat{A}$ gives the value $a_n$ is given by
  \begin{equation}
@@ -72,9 +72,9 @@ Recall that here we assumed that the operator $\hat{A}$ is Hermitian, and that t
 Let us compute the integral of $\phi(x)$ with the complex conjugate of one of the eigenfunctions of $\hat{A}$, say $f_k(x)$
 \begin{equation}
 \begin{split}
-\int f^*_k(x) \phi(x) \, dx =& \int  f^*_k(x)\sum_{n = 0}^\infty c_n f_n(x) \, dx \\
-=& \sum_{n = 0}^\infty c_n \underbrace{\int  f^*_k(x) f_n(x) \, dx}_{\delta_{kn}} \\
-=& \sum_{n = 0}^\infty c_n \delta_{kn} = c_k.
+\int f^*_k(x) \phi(x) \, dx =& \int  f^*_k(x)\sum_{n = 1}^\infty c_n f_n(x) \, dx \\
+=& \sum_{n = 1}^\infty c_n \underbrace{\int  f^*_k(x) f_n(x) \, dx}_{\delta_{kn}} \\
+=& \sum_{n = 1}^\infty c_n \delta_{kn} = c_k.
 \end{split}
 \end{equation}
 Here we used the Kronecker delta ($\delta_{in}$), defined as
@@ -112,8 +112,8 @@ The expectation value of the energy is given by
 \end{equation}
 To evaluate this quantity we expand $\phi(x)$ using Eq.~\eqref{eq:super:superposition} to get
 \begin{equation}
-\langle \hat{H} \rangle = \int \left[ \sum_{m = 0}^\infty c_m \psi_m(x) \right]^*  \hat{H} \left[ \sum_{n = 0}^\infty c_n \psi_n(x) \right] \, dx
- = \sum_{m = 0}^\infty \sum_{n = 0}^\infty   c^*_m c_n \int \psi^*_m(x) \hat{H} \psi_n(x) \, dx.
+\langle \hat{H} \rangle = \int \left[ \sum_{m = 1}^\infty c_m \psi_m(x) \right]^*  \hat{H} \left[ \sum_{n = 1}^\infty c_n \psi_n(x) \right] \, dx
+ = \sum_{m = 1}^\infty \sum_{n = 1}^\infty   c^*_m c_n \int \psi^*_m(x) \hat{H} \psi_n(x) \, dx.
 \end{equation}
 Note that since $\psi_n(x)$ is an eigenfunction of $\hat{H}$ we can simplify the integral
 \begin{equation}
@@ -122,13 +122,13 @@ Note that since $\psi_n(x)$ is an eigenfunction of $\hat{H}$ we can simplify the
 \end{equation}
 If we plug this result back into the expression for the expectation value of the energy we get
 \begin{equation}
-\langle \hat{H} \rangle = \sum_{m = 0}^\infty \sum_{n = 0}^\infty   c^*_m c_n E_n \delta_{mn} = \sum_{n = 0}^\infty   c^*_n c_n E_n = \sum_{n = 0}^\infty   |c_n|^2 E_n.
+\langle \hat{H} \rangle = \sum_{m = 1}^\infty \sum_{n = 1}^\infty   c^*_m c_n E_n \delta_{mn} = \sum_{n = 1}^\infty   c^*_n c_n E_n = \sum_{n = 1}^\infty   |c_n|^2 E_n.
 \end{equation}
 This result tells us that the average energy is a weighted average of the energy of all states, where the weight of a state is given by the square of the coefficient $|c_n|^2$.
 
 For a general operator $\hat{A}$ we derive the more general result
 \begin{equation}
-\langle \hat{A} \rangle = \sum_{m = 0}^\infty \sum_{n = 0}^\infty   c^*_m c_n \int \psi^*_m(x) \hat{A} \psi_n(x) \, dx,
+\langle \hat{A} \rangle = \sum_{m = 1}^\infty \sum_{n = 1}^\infty   c^*_m c_n \int \psi^*_m(x) \hat{A} \psi_n(x) \, dx,
 \end{equation}
 which depends on the value of the integral
 \begin{equation}
@@ -139,7 +139,7 @@ In general we cannot simplify this integral and we have to evaluate it either us
 The notation used in Eq.~\eqref{eq:super:matrixelement} suggest thinking of $A_{mn}$ as a matrix\mnote{A matrix is just a table of numbers with indices that represent the coordinates of the entries.} ($\mathbf{A}$), which allows us to rewrite the expectation value as\mnote{
 Is it possible to write this term also as a quadratic form, $\langle \hat{A} \rangle = \mathbf{c}^\dagger \mathbf{A} \mathbf{c}$, where $\mathbf{c}$ stands for the vector $c_n$ and the dagger symbol $^\dagger$ indicates the Hermitian adjoint.}
 \begin{equation}
-\langle \hat{A} \rangle = \sum_{m = 0}^\infty \sum_{n = 0}^\infty   c^*_m A_{mn} c_n.
+\langle \hat{A} \rangle = \sum_{m = 1}^\infty \sum_{n = 1}^\infty   c^*_m A_{mn} c_n.
 \end{equation}
 
 \subsection{Time evolution of general wave functions}
@@ -147,24 +147,24 @@ In general, a superposition of state is not stationary, that is, it will evolve 
 In this section we will study how a generic wave function evolves over time.
 Let us assume that at $t = 0$ the wave function is a superposition of energy eigenstates with coefficients $c_n$
 \begin{equation}
-\phi(x, t = 0) = \sum_{n = 0}^\infty c_n \psi_n(x).
+\phi(x, t = 0) = \sum_{n = 1}^\infty c_n \psi_n(x).
 \end{equation}
 At a later time, $t > 0$, the wave function will change, but we can still represent it as a linear combination of energy eigenstates, except for the fact that the coefficients will be different. If we indicate the coefficients at time $t$ as $c_n(t)$ the wave function is then given by
 \begin{equation}
 \label{eq:super:tdwavefunction}
-\phi(x, t) = \sum_{n = 0}^\infty c_n(t) \psi_n(x).
+\phi(x, t) = \sum_{n = 1}^\infty c_n(t) \psi_n(x).
 \end{equation}
 To find the coefficients $c_n(t)$ we plug this equation into the time-dependent Schr\"{o}dinger equation to get
 \begin{equation}
-i\hbar \frac{\partial }{\partial t} \sum_{n = 0}^\infty c_n(t) \psi_n(x)= \hat{H} \sum_{n = 0}^\infty c_n(t) \psi_n(x),
+i\hbar \frac{\partial }{\partial t} \sum_{n = 1}^\infty c_n(t) \psi_n(x)= \hat{H} \sum_{n = 1}^\infty c_n(t) \psi_n(x),
 \end{equation}
 taking the derivate with respect to time on the l.h.s. and applying the Hamiltonian operator on the r.h.s. we arrive at
 \begin{equation}
-i\hbar  \sum_{n = 0}^\infty \frac{\partial c_n(t)}{\partial t} \psi_n(x)= \sum_{n = 0}^\infty c_n(t)  \hat{H}\psi_n(x) = \sum_{n = 0}^\infty c_n(t)  E_n \psi_n(x).
+i\hbar  \sum_{n = 1}^\infty \frac{\partial c_n(t)}{\partial t} \psi_n(x)= \sum_{n = 1}^\infty c_n(t)  \hat{H}\psi_n(x) = \sum_{n = 1}^\infty c_n(t)  E_n \psi_n(x).
 \end{equation}
 Now we use a trick that we will encounter many times: multiply both sides with $\psi^*_k(x)$ and integrate
 \begin{equation}
-i\hbar  \sum_{n = 0}^\infty \frac{\partial c_n(t)}{\partial t} \int \psi^*_k(x)\psi_n(x) \, dx= \sum_{n = 0}^\infty c_n(t)  E_n \underbrace{\int \psi^*_k(x)\psi_n(x)  \,  dx}_{\delta_{kn}}.
+i\hbar  \sum_{n = 1}^\infty \frac{\partial c_n(t)}{\partial t} \int \psi^*_k(x)\psi_n(x) \, dx= \sum_{n = 1}^\infty c_n(t)  E_n \underbrace{\int \psi^*_k(x)\psi_n(x)  \,  dx}_{\delta_{kn}}.
 \end{equation}
 The quantities inside the integral are Kronecker deltas (see Sec.~\ref{sec:super:coefficients}), and are equal to one only if $ k = n$. This leads to the much simpler equation
 \begin{equation}
@@ -177,7 +177,7 @@ c_n(t) = c_n e^{-i E_n t / \hbar},
 where we used the initial condition $c_n(0) = c_n$. 
 Plugging this result in Eq.~\eqref{eq:super:tdwavefunction} we arrive at the general solution of the time-dependent Schr\"{o}dinger equation
 \begin{iequation}
-\phi(x, t) = \sum_{n = 0}^\infty c_n \psi_n(x) e^{-i E_n t / \hbar}.
+\phi(x, t) = \sum_{n = 1}^\infty c_n \psi_n(x) e^{-i E_n t / \hbar}.
 \end{iequation}
 Note that this result is only valid if $E_n$ and $\psi_n(x)$ are eigenvalue/eigenfunction of the Hamiltonian operator.
 
