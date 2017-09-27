@@ -1,0 +1,217 @@
+% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/
+% or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% !TEX TS-program = xelatex
+
+\documentclass[../Main/chem331-notes.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{7}
+
+\section{Superposition of states and their time evolution}
+\subsection{Superposition of states}
+Quantum mechanics postulates that if we have some generic state $\phi(x)$ that is not an eigenstate of the Hamiltonian, we can always represent is as a combination of eigenstates of the Hamiltonian operator $\hat{H}$, $\psi_n(x)$.\mnote{We can actually use eigenstates of any Hermitian operator, e.g., $\hat{p}$.} For example, in the case of the particle in a box we can write
+\begin{equation}
+\label{eq:super:superposition}
+\phi(x) = \sum_{n = 0}^\infty c_n \psi_n(x) = \sum_{n = 0}^\infty c_n \sqrt{\frac{2}{L}} \sin\left(\frac{n \pi x}{L}\right),
+\end{equation}
+where the numbers $c_n$ are complex and are often referred to as expansion coefficients or just coefficients.
+These coefficients must have norm less or equal to one
+\begin{equation}
+|c_n|^2 \leq 1 \quad \forall n,
+\end{equation}
+and their sum must be equal to one
+\begin{equation}
+\sum_{n = 0}^\infty |c_n|^2 = 1.
+\end{equation}
+Quantum mechanics tells us that when we measure the energy of state $\phi(x)$ we will get as a result one of the eigenvalues of the Hamiltonian.
+However, if we know the expansion coefficients of $\phi(x)$ we can say something more.
+Indeed, the probability of measuring the energy $E_n$ is equal to the modulus square of the coefficient for eigenstate $\psi_n(x)$
+\begin{equation}
+\text{Probability of measuring } E_n = P_n = |c_n|^2.
+\end{equation}
+For example, consider the state
+\begin{equation}
+\phi(x) = \underbrace{\frac{1}{\sqrt{2}}}_{c_1} \psi_1(x) \underbrace{- i \frac{1}{\sqrt{2}}}_{c_3} \psi_3(x).
+\end{equation}
+Here we can immediately identify the coefficient for each state. We have $c_1 = \frac{1}{\sqrt{2}}$ and $c_3 = - i \frac{1}{\sqrt{2}}$, and all other coefficients are zero, $c_2 = c_4 = \ldots = 0$.
+What is the probability of measuring $E_1$ and $E_3$? We can compute these quantities by taking the square of the wave function coefficients
+\begin{equation}
+\begin{split}
+P_1 &= \left|\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2},\\
+P_3 &= \left|-i\frac{1}{\sqrt{2}}\right|^2 = \frac{1}{2}.
+\end{split}
+\end{equation}
+
+This result generalizes to any Hermitian operator $\hat{A}$. Suppose we know the eigenfunctions of $\hat{A}$, $\psi_n(x)$, and the corresponding eigenvalues $a_n$
+\begin{equation}
+\hat{A} f_n(x) = a_n f_n(x),
+\end{equation}
+then a generic wave function $\phi(x)$ may be expanded as
+\begin{equation}
+\phi(x) = \sum_{n = 0}^\infty c_n f_n(x),
+\end{equation}
+ and the probability that a measurement of $\hat{A}$ gives the value $a_n$ is given by
+ \begin{equation}
+\text{Probability of measuring } a_n = P_n = |c_n|^2.
+\end{equation}
+
+What happens after a measurement? A measurement changes the wave function of a system so if we measure the final state and obtain the value $a_n$ the state is in the eigenstate $f_n(x)$.
+ If a measurement is then repeated we will continue to obtain the same value, $a_n$, and the system will be in the same state, $f_n(x)$,
+\begin{equation}
+\phi(x) \xrightarrow{\text{Measurement  of }\hat{A}}{} f_n(x) \xrightarrow{\text{Measurement  of }\hat{A}}{} f_n(x)
+\end{equation}
+ This phenomenon is called the \textbf{collapse of the wave function}.
+This is perhaps one of the most puzzling aspects of quantum mechanics and it is the source of paradoxes like the one involving Schr\"{o}dinger's cat \href{https://ed.ted.com/lessons/schrodinger-s-cat-a-thought-experiment-in-quantum-mechanics-chad-orzel}{(\textbf{click here for a link to video})}.
+
+\subsection{Evaluation of the expansion coefficients}
+\label{sec:super:coefficients}
+Suppose the we know a generic state $\phi(x)$ but we do not know the expansion coefficients $c_n$, how can we determine them?
+Recall that here we assumed that the operator $\hat{A}$ is Hermitian, and that the eigenfunctions of Hermitian operators are orthonormal.
+Let us compute the integral of $\phi(x)$ with the complex conjugate of one of the eigenfunctions of $\hat{A}$, say $f_k(x)$
+\begin{equation}
+\begin{split}
+\int f^*_k(x) \phi(x) \, dx =& \int  f^*_k(x)\sum_{n = 0}^\infty c_n f_n(x) \, dx \\
+=& \sum_{n = 0}^\infty c_n \underbrace{\int  f^*_k(x) f_n(x) \, dx}_{\delta_{kn}} \\
+=& \sum_{n = 0}^\infty c_n \delta_{kn} = c_k.
+\end{split}
+\end{equation}
+Here we used the Kronecker delta ($\delta_{in}$), defined as
+\begin{equation}
+\delta_{kn} =
+\begin{cases}
+1 & \text{if } k = n \\
+0 & \text{if } k \neq n. 
+\end{cases}
+\end{equation}
+When we write
+\begin{equation}
+\int  f^*_k(x) f_n(x) \, dx = \delta_{kn},
+\end{equation}
+we are condensing both the normalization (when $k = n$) and the orthogonality (when $k \neq n$) conditions of the functions $f_n(x)$ in one line.
+
+Going back to our integral, we find that the expansion coefficients may be determined as
+\begin{iequation}
+\begin{split}
+c_k = \int f^*_k(x) \phi(x) \, dx = \langle{f_k}|{\phi}\rangle.
+\end{split}
+\end{iequation}
+Here we introduced the bra--ket notation\mnote{This notation was introduced by physicist Paul Dirac and is also known as Dirac notation.} for the integral ($\langle{\cdot}|{\cdot}\rangle$), which, for a pair of generic functions $f(x)$ and $g(x)$ is defined as
+\begin{iequation}
+\langle{f}|{g}\rangle = \int f^*(x) g(x) \, dx.
+\end{iequation}
+Going back to the analogy of functions and vectors, the quantity $\langle{f}|{g}\rangle$, which is called the inner product of $f(x)$ and $g(x)$, may be considered the function analog of the dot product for vectors.
+
+\subsection{Expectation values of general wave functions}
+Next, we want to understand how to relate the expectation value of a superposition of state to that of the individual eigenstates used to expand it.
+We will start with a special case and consider the expectation value of the energy for a wave function expanded in the energy eigenstates.
+The expectation value of the energy is given by
+\begin{equation}
+\langle \hat{H} \rangle = \int \phi^*(x) \hat{H} \phi(x) \, dx = \langle{\phi}|\hat{H}|{\phi}\rangle.
+\end{equation}
+To evaluate this quantity we expand $\phi(x)$ using Eq.~\eqref{eq:super:superposition} to get
+\begin{equation}
+\langle \hat{H} \rangle = \int \left[ \sum_{m = 0}^\infty c_m \psi_m(x) \right]^*  \hat{H} \left[ \sum_{n = 0}^\infty c_n \psi_n(x) \right] \, dx
+ = \sum_{m = 0}^\infty \sum_{n = 0}^\infty   c^*_m c_n \int \psi^*_m(x) \hat{H} \psi_n(x) \, dx.
+\end{equation}
+Note that since $\psi_n(x)$ is an eigenfunction of $\hat{H}$ we can simplify the integral
+\begin{equation}
+\int \psi^*_m(x) \hat{H} \psi_n(x) \, dx =   \int \psi^*_m(x) E_n \psi_n(x) \, dx
+=  E_n \int \psi^*_m(x) \psi_n(x) \, dx = E_n \delta_{mn}.
+\end{equation}
+If we plug this result back into the expression for the expectation value of the energy we get
+\begin{equation}
+\langle \hat{H} \rangle = \sum_{m = 0}^\infty \sum_{n = 0}^\infty   c^*_m c_n E_n \delta_{mn} = \sum_{n = 0}^\infty   c^*_n c_n E_n = \sum_{n = 0}^\infty   |c_n|^2 E_n.
+\end{equation}
+This result tells us that the average energy is a weighted average of the energy of all states, where the weight of a state is given by the square of the coefficient $|c_n|^2$.
+
+For a general operator $\hat{A}$ we derive the more general result
+\begin{equation}
+\langle \hat{A} \rangle = \sum_{m = 0}^\infty \sum_{n = 0}^\infty   c^*_m c_n \int \psi^*_m(x) \hat{A} \psi_n(x) \, dx,
+\end{equation}
+which depends on the value of the integral
+\begin{equation}
+\label{eq:super:matrixelement}
+A_{mn} = \int \psi^*_m(x) \hat{A} \psi_n(x) \, dx = \langle{\psi_m}|\hat{A}|{\psi_n}\rangle.
+\end{equation}
+In general we cannot simplify this integral and we have to evaluate it either using analytic or numerical integration.
+The notation used in Eq.~\eqref{eq:super:matrixelement} suggest thinking of $A_{mn}$ as a matrix\mnote{A matrix is just a table of numbers with indices that represent the coordinates of the entries.} ($\mathbf{A}$), which allows us to rewrite the expectation value as\mnote{
+Is it possible to write this term also as a quadratic form, $\langle \hat{A} \rangle = \mathbf{c}^\dagger \mathbf{A} \mathbf{c}$, where $\mathbf{c}$ stands for the vector $c_n$ and the dagger symbol $^\dagger$ indicates the Hermitian adjoint.}
+\begin{equation}
+\langle \hat{A} \rangle = \sum_{m = 0}^\infty \sum_{n = 0}^\infty   c^*_m A_{mn} c_n.
+\end{equation}
+
+\subsection{Time evolution of general wave functions}
+In general, a superposition of state is not stationary, that is, it will evolve over time.
+In this section we will study how a generic wave function evolves over time.
+Let us assume that at $t = 0$ the wave function is a superposition of energy eigenstates with coefficients $c_n$
+\begin{equation}
+\phi(x, t = 0) = \sum_{n = 0}^\infty c_n \psi_n(x).
+\end{equation}
+At a later time, $t > 0$, the wave function will change, but we can still represent it as a linear combination of energy eigenstates, except for the fact that the coefficients will be different. If we indicate the coefficients at time $t$ as $c_n(t)$ the wave function is then given by
+\begin{equation}
+\label{eq:super:tdwavefunction}
+\phi(x, t) = \sum_{n = 0}^\infty c_n(t) \psi_n(x).
+\end{equation}
+To find the coefficients $c_n(t)$ we plug this equation into the time-dependent Schr\"{o}dinger equation to get
+\begin{equation}
+i\hbar \frac{\partial }{\partial t} \sum_{n = 0}^\infty c_n(t) \psi_n(x)= \hat{H} \sum_{n = 0}^\infty c_n(t) \psi_n(x),
+\end{equation}
+taking the derivate with respect to time on the l.h.s. and applying the Hamiltonian operator on the r.h.s. we arrive at
+\begin{equation}
+i\hbar  \sum_{n = 0}^\infty \frac{\partial c_n(t)}{\partial t} \psi_n(x)= \sum_{n = 0}^\infty c_n(t)  \hat{H}\psi_n(x) = \sum_{n = 0}^\infty c_n(t)  E_n \psi_n(x).
+\end{equation}
+Now we use a trick that we will encounter many times: multiply both sides with $\psi^*_k(x)$ and integrate
+\begin{equation}
+i\hbar  \sum_{n = 0}^\infty \frac{\partial c_n(t)}{\partial t} \int \psi^*_k(x)\psi_n(x) \, dx= \sum_{n = 0}^\infty c_n(t)  E_n \underbrace{\int \psi^*_k(x)\psi_n(x)  \,  dx}_{\delta_{kn}}.
+\end{equation}
+The quantities inside the integral are Kronecker deltas (see Sec.~\ref{sec:super:coefficients}), and are equal to one only if $ k = n$. This leads to the much simpler equation
+\begin{equation}
+i\hbar  \frac{\partial c_k(t)}{\partial t} = c_k(t)  E_k.
+\end{equation}
+We have already solved this equation when we introduced the time-dependent Schr\"{o}dinger equation. The solution is
+\begin{equation}
+c_n(t) = c_n e^{-i E_n t / \hbar},
+\end{equation}
+where we used the initial condition $c_n(0) = c_n$. 
+Plugging this result in Eq.~\eqref{eq:super:tdwavefunction} we arrive at the general solution of the time-dependent Schr\"{o}dinger equation
+\begin{iequation}
+\phi(x, t) = \sum_{n = 0}^\infty c_n \psi_n(x) e^{-i E_n t / \hbar}.
+\end{iequation}
+Note that this result is only valid if $E_n$ and $\psi_n(x)$ are eigenvalue/eigenfunction of the Hamiltonian operator.
+
+\begin{exercise}
+Consider a wave function that at time $t = 0$ is equal to the superposition of states
+\begin{equation}
+\phi(x,0) = \frac{1}{\sqrt{2}} \psi_1(x) - \frac{1}{\sqrt{2}} \psi_2(x).
+\end{equation}
+Show that the solution to the time-dependent Schr\"{o}dinger equation is given by
+\begin{equation}
+\phi(x,t) = \frac{1}{\sqrt{2}} \psi_1(x) e^{-i E_1 t / \hbar}- \frac{1}{\sqrt{2}} \psi_2(x) e^{-i E_2 t / \hbar},
+\end{equation}
+by plugging in this function in the time-dependent Schr\"{o}dinger and verifying that the l.h.s. equals the r.h.s.
+\end{exercise}
+
+\begin{exercise}
+Compute the probability density [$\rho(x,t)$] of the time-dependent wave function
+\begin{equation}
+\phi(x,t) = \frac{1}{\sqrt{2}} \psi_1(x) e^{-i E_1 t / \hbar} + \frac{1}{\sqrt{2}} \psi_2(x) e^{-i E_2 t / \hbar}
+\end{equation}
+expressing the time dependence in terms of trigonometric functions ($\sin/\cos$).
+Relate the frequency of the time-dependent part of $\rho(x,t)$ to the energies $E_1$ and $E_2$.
+\end{exercise}
+%
+%
+%
+%\begin{equation}
+%|\phi(x,t)|^2 = \frac{1}{2} |\psi_1(x)|^2 + \frac{1}{2} |\psi_3(x)|^2 -\frac{1}{2} \psi^*_1(x)  \psi_3(x)   e^{-i (E_3 - E_1) t / \hbar} -\frac{1}{2} \psi^*_3(x)  \psi_1(x)   e^{-i (E_1 - E_3) t / \hbar} .
+%\end{equation}
+%
+%\begin{equation}
+%|\phi(x,t)|^2 = \frac{1}{2} |\psi_1(x)|^2 + \frac{1}{2} |\psi_3(x)|^2 -\frac{1}{2} \psi_1(x)  \psi_3(x)  \cos\left(\frac{E_3 - E_1}{\hbar} t\right).
+%% -\frac{1}{2} \psi^*_3(x)  \psi_1(x)   e^{-i (E_1 - E_3) t / \hbar} .
+%\end{equation}
+
+
+\end{document}
