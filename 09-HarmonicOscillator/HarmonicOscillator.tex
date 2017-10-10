@@ -1,0 +1,161 @@
+% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/
+% or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% !TEX TS-program = xelatex
+
+\documentclass[../Main/chem331-notes.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{8}
+
+\section{The harmonic oscillator}
+\subsection{Classical oscillations}
+In classical physics the most simple example of period oscillatory motion is given by the harmonic oscillator.
+A harmonic oscillator has a potential that is quadratic with respect to the position
+\begin{equation}
+V(x) = \frac{1}{2} k x^2,
+\end{equation}
+and a force that is linear
+\begin{equation}
+F = -\frac{dV(x)}{dx} = -k x.
+\end{equation}
+This last equation shows that the harmonic oscillator is like a spring. The more you pull it, the larger is the force that tries to restore the position of the particle to $x = 0$.
+
+Newton's equation for a particle of mass $m$ that experiences a harmonic potential is
+\begin{equation}
+F = ma \Rightarrow   - k x = m \frac{d^2 x}{dt^2},
+\end{equation}
+and its solutions have the form
+\begin{equation}
+x(t) = A \cos(\omega t + B),
+\end{equation}
+where 
+\begin{equation}
+\omega = \sqrt{\frac{k}{m}},
+\end{equation}
+and $A$ is the amplitude of the oscillation (the maximum value of $x(t)$ possible) and $B$ is a phase factor.
+The classical solution corresponds to periodic oscillation of the particle with frequency $\omega / 2\pi$.\mnote{Because it take a time $T = 2\pi/\omega$ to complete a full oscillation.}
+Both $A$ and $B$ depend on the initial conditions. For example, for a harmonic oscillator that at $t = 0$ has zero velocity and is at position $x_0$, then we have that $A = x_0$ and $B = 0$, and the solution is
+\begin{equation}
+x(t) = x_0 \cos(\omega t).
+\end{equation}
+
+
+\subsection{Harmonic oscillator as a model for vibrations in diatomics}
+Our main motivation for studying the harmonic oscillator is having a model for vibrations of atoms in molecules.
+To see the connection between these two problems we will consider a diatomic molecule, A--B, with general molecular potential $V(r)$, where $r$ is the distance between atoms A and B.
+If A and B form a bond, this potential will have a minimum at a certain bond length $r_e$, the \textbf{equilibrium bond distance}.
+Since $V(r)$ has a minimum at $r_e$, its first derivative evaluated at $r_e$ is zero
+\begin{equation}
+\label{eq:harmonic:stationary}
+\left.\frac{dV(r)}{dr}\right|_{r = r_e}  = 0.
+\end{equation}
+To show the connection between the potential $V(r)$ and the harmonic potential we Taylor expand the former around the point $r = r_e$
+\begin{equation}
+V(r) = V(r_e) + \left.\frac{dV(r)}{dr}\right|_{r = r_e} (r - r_e) 
++ \frac{1}{2} \left.\frac{d^2V(r)}{dr^2}\right|_{r = r_e} (r - r_e)^2
++ \text{higher order terms},
+\end{equation}
+where the higher order terms include the third and higher powers of $(r - r_e)$.
+If we truncate the Taylor expansion to second order terms and used Eq.~\eqref{eq:harmonic:stationary} we can rewrite it as
+\begin{equation}
+V(r) \approx V(r_e) 
++ \frac{1}{2} k (r - r_e)^2,
+\end{equation}
+where $k$ is the second derivative of the potential at the equilibrium bond distance
+\begin{iequation}
+\label{eq:harmonic:fc}
+k = \left.\frac{d^2V(r)}{dr^2}\right|_{r = r_e}.
+\end{iequation}
+
+Next, we can introduce a new variable,
+\begin{equation}
+x = r - r_e,
+\end{equation}
+which measures the displacement from the equilibrium bond distance, and express the potential as a function of $x$. This step leads to
+\begin{equation}
+V(x + r_e) = V(r_e) + k x^2.
+\end{equation}
+It is convenient at this point to rewrite this function is a slightly simpler way. Let us define a function $\tilde{V}(x) = V(x + r_e)$. For this new function $\tilde{V}(0) = V(r_e)$, and so we can rewrite the potential expanded to second order as
+\begin{equation}
+\tilde{V}(x) = \tilde{V}(0) + \frac{1}{2} k x^2.
+\end{equation}
+What we have done here is just express the potential as a function of the variable $x$ instead of $r$. This is just a change of variable, as you have already seen as a technique to simplify integrals.
+At this point we can see that the potential $V(r)$ approximated with a Taylor expansion around the equilibrium bond distance simply gives us a harmonic potential that contains a constant term $\tilde{V}(0)$ and with force constant $k$ given by Eq.~\eqref{eq:harmonic:fc}.
+
+\subsection{Hamiltonian for the harmonic oscillator and boundary conditions}
+Now we want to study the harmonic oscillator in the setting of quantum mechanics.
+This simple problem will be very useful to model the oscillations of atoms in molecules.
+Let us first write the Hamiltonian
+\begin{equation}
+\hat{H} = \hat{T} + \hat{V} = -\frac{\hbar^2}{2m} \frac{d^2}{d x^2} + \frac{1}{2} k x^2.
+\end{equation}
+Note that for any finite value of $x$ the potential is finite. This situation is different than that we encountered for the case of a particle in a box.
+Because the potential is finite, the particle could have a finite probability of being found anywhere on the $x$ axis.
+However, the wave function must go to zero when $x \rightarrow \pm \infty$ because otherwise the wave function could not be normalized.
+The appropriate boundary conditions for the harmonic oscillator are then
+\begin{iequation}
+\lim_{x \rightarrow \pm \infty} \psi(x) = 0.
+\end{iequation}
+
+\subsection{Eigenvalues and eigenfunctions of the harmonic oscillator}
+While in the case of the particle in a box we were able to directly solve the Schr\"{o}dinger equation, for the harmonic oscillator we will directly look at the solutions skipping entirely their derivation.
+The eigenfunctions of the harmonic oscillator are usually written in terms of a special class of polynomials named after the mathematician Charles Hermite\mnote{Although they were invented by Pafnuty Chebyshev. Don't worry though, there are special polynomial named after Chebyshev as well.}
+Hermit polynomials are generally written as $H_n(x)$, where $n = 0, 1, \ldots$ is an integer and $x$ is a real number.
+They are given by the formula
+\begin{equation}
+H_n(x) = (-1)^n e^{x^2} \frac{d^n}{dx^n} e^{-x^2},
+\end{equation}
+which for the first five polynomials gives
+\begin{align}
+H_0(x) & = 1, \\
+H_1(x) & = 2x, \\
+H_2(x) & = 4x^2 -2, \\
+H_3(x) & = 8x^{3} -12x, \\
+H_4(x) & = 16x^{4} -48x^2 + 12.
+\end{align}
+It is also possible to express them using the \textbf{recursive relationship}
+\begin{equation}
+H_{n+1}(x) = 2x H_n(x) - 2n H_{n-1}(x),
+\end{equation}
+which is a recipe to compute the polynomial of order $n+1$ once you know the polynomials of order $n$ and $n-1$. Since $H_0(x) = 1$ and $H_1(x) = 2x$, we can use this equation to reconstruct the entire series of Hermit polynomials. For example,
+\begin{equation}
+H_{2}(x) = 2x H_1(x) - 2 H_{0}(x) = 2x (2x) - 2 = 4x^2 - 2.
+\end{equation}
+
+The eigenfunctions of the harmonic oscillator are given by
+\begin{iequation}
+\psi_v(x) = \frac{1}{\left(2^v v!\right)^\frac{1}{2}} \left(\frac{\alpha}{\pi}\right)^{\frac{1}{4}} H_v(\sqrt{\alpha} x) \, e^{-\alpha x^2} \quad v = 0, 1, 2, \ldots,
+\end{iequation}
+where $v$ is an integer quantum number and $\alpha$ is defined as
+\begin{iequation}
+\alpha = \left(\frac{km}{\hbar^2} \right)^\frac{1}{2} = \frac{m \omega}{\hbar}.
+\end{iequation}
+
+The eigenvalues are given by the expression
+\begin{iequation}
+E_v = \hbar \omega \left(v + \frac{1}{2}\right)
+\end{iequation}
+
+\subsection{Classical turning point and tunneling}
+A classical harmonic oscillator with total energy $E$ will stretch until the kinetic energy is fully converted to potential energy, in which case
+\begin{equation}
+E = V = \frac{1}{2} k x_\mathrm{t}^2,
+\end{equation}
+where $x_\mathrm{t}$ is the coordinate of the \textbf{turning points}.
+The turning points may be obtained by inverting the equation above
+\begin{align}
+x_\mathrm{t}^{+} = + \sqrt{\frac{2 E}{k}}, \\
+x_\mathrm{t}^{-} = - \sqrt{\frac{2 E}{k}}.
+\end{align}
+A classical particle will not move beyond the turning points, that is, the probability of finding the particle above or below the classical turning points is zero.
+However, for the quantum harmonic oscillator this is not true and the probabilities are finite
+\begin{align}
+P [(x \leq x_\mathrm{t}^{-})  \text{ or }  (x \geq x_\mathrm{t}^{+})] = \int_{-\infty}^{x_\mathrm{t}^{-}} |\psi_v(x)|^2 \, dx + \int_{x_\mathrm{t}^{+}}^{\infty} |\psi_v(x)|^2 \, dx > 0.
+\end{align}
+
+
+
+\end{document}
+

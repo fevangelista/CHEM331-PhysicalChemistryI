@@ -1,0 +1,121 @@
+% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/
+% or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% !TEX TS-program = xelatex
+
+\documentclass[../Main/chem331-notes.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{9}
+
+\section{Vibrations in diatomic molecules}
+\subsection{Separation of internal and center of mass motion}
+In this section we will study how to apply the harmonic oscillator model to a diatomic molecule.
+The first aspect we have to study is how to connect the Hamiltonian of a diatomic molecule to that of the harmonic oscillator.
+For a diatomic molecule the Hamiltonian will depend on the coordinate of atom 1 ($x_1$) and atom 2 ($x_2$), as well as, their corresponding masses $m_1$ and $m_2$.
+The kinetic energy is
+\begin{equation}
+\hat{T} = -\frac{\hbar^2}{2 m_1} \frac{\partial^2}{\partial x_1^2} + -\frac{\hbar^2}{2 m_2} \frac{\partial^2}{\partial x_2^2},
+\end{equation}
+while the potential is
+\begin{equation}
+\hat{V} = \frac{1}{2} k (x_2 - x_1 - r_e)^2,
+\end{equation}
+where we assumed that the potential is $(x_2 - x_1 - r_e)^2$ is the square of the distance of the two atoms.
+This potential is zero at the equilibrium bond distance, when $x_2 - x_1 = r_e$, otherwise it is positive.
+Now we will introduce two new variables, the bond distance ($r$) and the center of mass ($R$), defined as
+\begin{align}
+r & = x_2 - x_1 \\
+R & = \frac{m_1 x_1 + m_2 x_2}{m_1 + m_2} = \frac{m_1 x_1 + m_2 x_2}{M},
+\end{align}
+where $M = m_1 + m_2$ is the total mass.
+
+In this new system of coordinates the potential simplifies to
+\begin{equation}
+\hat{V} = \frac{1}{2} k (x_2 - x_1 - r_e)^2 = \frac{1}{2} k (r - r_e)^2,
+\end{equation}
+
+Applying the chain rule we express the derivatives in $x_1$ and $x_2$ as derivatives in $r$ and $R$
+\begin{equation}
+\frac{\partial}{\partial x_1} = \frac{\partial r}{\partial x_1} \frac{\partial}{\partial r} + \frac{\partial r}{\partial x_1} \frac{\partial}{\partial r},
+\end{equation}
+where
+\begin{equation}
+\frac{\partial r}{\partial x_1} = \frac{\partial}{\partial x_1} \left( x_2 - x_1 \right) = -1,
+\end{equation}
+and
+\begin{equation}
+\frac{\partial R}{\partial x_1} = \frac{\partial}{\partial x_1} \left(\frac{m_1 x_1 + m_2 x_2}{m_1 + m_2} \right) = \frac{m_1}{M}.
+\end{equation}
+So we can write
+\begin{equation}
+\frac{\partial}{\partial x_1} = - \frac{\partial}{\partial r} + \frac{m_1}{M}\frac{\partial}{\partial R},
+\end{equation}
+and the second derivative is
+\begin{equation}
+\frac{\partial^2}{\partial x^2_1} = \frac{\partial^2}{\partial r^2} + \left(\frac{m_1}{M}\right)^2\frac{\partial^2}{\partial R^2} - \frac{2 m_1}{M}\frac{\partial^2}{\partial R \partial r}.
+\end{equation}
+Repeating the same for $x_2$ we get
+\begin{equation}
+\frac{\partial^2}{\partial x^2_2} = \frac{\partial^2}{\partial r^2} + \left(\frac{m_2}{M}\right)^2\frac{\partial^2}{\partial R^2} + \frac{2 m_2}{M}\frac{\partial^2}{\partial R \partial r}.
+\end{equation}
+
+Plugging these two derivatives in the kinetic energy operator we get
+\begin{align}
+\hat{T} = & -\frac{\hbar^2}{2 m_1} \left[
+\frac{\partial^2}{\partial r^2} + \left(\frac{m_1}{M}\right)^2\frac{\partial^2}{\partial R^2} - \frac{2 m_1}{M}\frac{\partial^2}{\partial R \partial r}
+\right] \\
+  & -\frac{\hbar^2}{2 m_2} 
+   \left[
+\frac{\partial^2}{\partial r^2} + \left(\frac{m_2}{M}\right)^2\frac{\partial^2}{\partial R^2} + \frac{2 m_2}{M}\frac{\partial^2}{\partial R \partial r}
+   \right] \\
+= &  -\frac{\hbar^2}{2} \frac{\partial^2}{\partial R^2} \left(\frac{m_1}{M^2} + \frac{m_2}{M^2}\right)   -\frac{\hbar^2}{2} \frac{\partial^2}{\partial r^2} \left(\frac{1}{m_1} + \frac{1}{m_2}  \right)  \\
+= & -\frac{\hbar^2}{2M} \frac{\partial^2}{\partial R^2} -\frac{\hbar^2}{2 \mu} \frac{\partial^2}{\partial r^2} .
+\end{align}
+The quantity $\mu$ is called the \textbf{reduced mass}
+\begin{iequation}
+\mu = \frac{1}{m_1} + \frac{1}{m_2} = \frac{m_1 + m_2}{m_1  m_2}.
+\end{iequation}
+Putting all together we can write the Hamiltonian as
+\begin{equation}
+\hat{H} =  -\frac{\hbar^2}{2M} \frac{\partial^2}{\partial R^2} -\frac{\hbar^2}{2 \mu} \frac{\partial^2}{\partial r^2} + \frac{1}{2} k (r - r_e)^2 = \hat{H}_\mathrm{CM} + \hat{H}_\mathrm{HO},
+\end{equation}
+which we separated as a center-of-mass Hamiltonian (CM) and a harmonic oscillator Hamiltonian (HO),
+\begin{equation}
+\hat{H}_\mathrm{CM} = -\frac{\hbar^2}{2M} \frac{\partial^2}{\partial R^2},
+\end{equation}
+and
+\begin{equation}
+\hat{H}_\mathrm{HO} = -\frac{\hbar^2}{2 \mu} \frac{\partial^2}{\partial r^2} + \frac{1}{2} k (r - r_e)^2.
+\end{equation}
+
+\begin{example}[Vibrations of diatomics]
+The force constant of H${}^{127}$I is $k = 291 \si{\newton\per\meter}$. Calculate the vibrational frequency of H${}^{127}$I in $\si{\per\centi\meter}$.
+
+Solution: The energy difference between two level of the harmonic oscillator is
+\begin{equation}
+E = \hbar \omega = \hbar \sqrt{\frac{k}{\mu}},
+\end{equation}
+and the wave numbers corresponding to this transition are
+\begin{equation}
+\tilde{\nu} = \frac{1}{\lambda} = \frac{\nu}{c} =  \frac{E}{hc} = \frac{1}{2\pi c}\sqrt{\frac{k}{\mu}}.
+\end{equation}
+The reduced mass of H${}^{127}$I is
+\begin{equation}
+\mu = \frac{m_1  m_2}{m_1 + m_2} = \frac{1.007825 \times 126.904468}{1.007825 + 126.904468} 1.660539040 \times 10^{-27} \si{\kilogram} = 1.66035 \times 10^{-27} \si{\kilogram}
+\end{equation}
+
+Plugging the number in we get
+\begin{equation}
+\tilde{\nu} = \frac{1}{2 \pi \times \SI{299792458}{\meter\per\second}}\sqrt{\frac{291 \si{\newton\per\meter}}{1.66035 \times 10^{-27} \si{\kilogram}}} = \SI{222252}{\per\meter} = \SI{2222.52}{\per\centi\meter}
+\end{equation}
+
+\end{example}
+
+
+
+
+
+\end{document}
+
