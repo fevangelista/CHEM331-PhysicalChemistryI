@@ -90,6 +90,40 @@ and
 \hat{H}_\mathrm{HO} = -\frac{\hbar^2}{2 \mu} \frac{\partial^2}{\partial r^2} + \frac{1}{2} k (r - r_e)^2.
 \end{equation}
 
+Recall that the center-of-mass Hamiltonian is the same as that for a particle in a box. So we can solve this problem for a particle in a box of dimension $L$ much larger than the molecule bond length. 
+
+Note that the Hamiltonian can be written as a sum of two separate terms that act on different coordinates.
+The center-of-mass Hamiltonian ($\hat{H}_\mathrm{CM}$) depends only on $R$, while the harmonic oscillator Hamiltonian ($\hat{H}_\mathrm{HO}$) acts only on $r$.
+In this case we say that the Hamiltonian is \textbf{separable}, and the eigenvalues and eigenfunctions are related to those of the two separate Hamiltonians.\mnote{In general, if the Hamiltonian splits into two parts $\hat{H} = \hat{H}_A + \hat{H}_B$, where $\hat{H}_A$ and $\hat{H}_B$ act on different variables $x$ and $y$, then the eigenvalues and eigenfunctions of $\hat{H}$ are $E = E_A + E_B$ and $\psi(x,y) = \psi_A(x) \psi_B(y)$, where $\hat{H}_A\psi_A(x) = E_A \psi_A(x)$ and $\hat{H}_B\psi_B(x) = E_B \psi_B(x)$.}
+The eigenvalues are the sum of the eigenvalues for a particle in a box (of mass $M$ and length $L$) and a harmonic oscillator (with $\omega = \sqrt{\frac{k}{\mu}}$)
+\begin{equation}
+E_{n,v} = E_{n}^\mathrm{CM} +  E_{v}^\mathrm{HO} = \frac{h^2 n^2}{8 M L^2} +  \hbar \omega \left( v + \frac{1}{2}\right)
+\end{equation}
+
+The eigenfunctions are instead given by
+\begin{equation}
+\psi(R,r) = \psi^\mathrm{PIB}_n(R) \psi^\mathrm{HO}_v(r),
+\end{equation}
+where $\psi^\mathrm{PIB}_n(R)$ and $\psi^\mathrm{HO}_v(r)$ are the eigenfunctions for a particle in a box and a harmonic oscillator, respectively.
+
+\subsection{Selection rule and vibrational spectra}
+If we are interested in the vibrational spectroscopy of diatomic molecules we can focus exclusively on the $v$ dependence of the energy.
+
+Not all transitions between the energy levels of the harmonic oscillator are allowed. The \textbf{selection rule}\mnote{Selection rules can be justified with quantum mechanics, but this subject is a bit advanced and will be covered later} for a harmonic oscillator tells us that the only allowed transitions are those that satisfy
+\begin{equation}
+\Delta v = \pm 1.
+\end{equation}
+Absorption of a photon can promote a harmonic oscillator from the level $v$ to $v+1$. The energy of the photon corresponding to this transition is given by the energy difference of these two levels
+\begin{equation}
+\Delta E_{v}= E_{v+1} - E_{v} =\hbar \omega \left( v + 1 + \frac{1}{2}\right) - \hbar \omega \left( v + \frac{1}{2}\right)
+= \hbar \omega,
+\end{equation}
+where
+\begin{equation}
+\omega = \hbar \sqrt{\frac{k}{\mu}}.
+\end{equation}
+Note that this difference is independent of $v$, so all transitions of a harmonic oscillator occur at the same frequency.
+
 \begin{example}[Vibrations of diatomics]
 The force constant of H${}^{127}$I is $k = 291 \si{\newton\per\meter}$. Calculate the vibrational frequency of H${}^{127}$I in $\si{\per\centi\meter}$.
 
@@ -110,10 +144,61 @@ Plugging the number in we get
 \begin{equation}
 \tilde{\nu} = \frac{1}{2 \pi \times \SI{299792458}{\meter\per\second}}\sqrt{\frac{291 \si{\newton\per\meter}}{1.66035 \times 10^{-27} \si{\kilogram}}} = \SI{222252}{\per\meter} = \SI{2222.52}{\per\centi\meter}
 \end{equation}
-
 \end{example}
 
 
+
+\subsection{The Morse potential}
+A convenient approximation to the potential of a diatomic molecule is the Morse potential
+\begin{equation}
+V(r) = D \left[1 - e^{-\beta (r - r_e)} \right]^2.
+\end{equation}
+This potential contains two parameters. The first one, $D$, is the dissociation energy of the molecule, while $r_e$ is the equilibrium bond distance. Both  $D$ and $\beta$ are assumed to be positive.
+
+To find the equilibrium geometry for the Morse potential we take the first derivative and set it to zero
+\begin{equation}
+\frac{d V(r)}{dr} = 2 D \left[1 - e^{-\beta (r - r_e)} \right] \frac{d}{dr} \left[1 - e^{-\beta (r - r_e)} \right]
+= 2 D \beta \left[1 - e^{-\beta (r - r_e)} \right] e^{-\beta (r - r_e)}.
+\end{equation}
+Setting the first derivative to zero requires solving the following equation
+\begin{equation}
+2 D \beta \left[1 - e^{-\beta (r - r_e)} \right] e^{-\beta (r - r_e)} = 0
+\end{equation}
+This expression is zero when $r = r_e$. To see this substitute $r$ with $r_e$ in the term in square brackets
+\begin{equation}
+1 - e^{-\beta (r_e - r_e)}  = 1 - e^{0} = 1 - 1 = 0.
+\end{equation}
+
+Once we know the equilibrium bond distance we can compute the dissociation energy ($D_e$) of the Morse potential.
+This quantity is defined as
+\begin{equation}
+D_e = V(\infty) - V(r_e).
+\end{equation}
+The first term is equal to
+\begin{equation}
+V(\infty) = \lim_{r \rightarrow \infty} D \left[1 - e^{-\beta (r - r_e)} \right]^2 = D,
+\end{equation}
+while the second one is equal to
+\begin{equation}
+V(r_e) = D \left[1 - e^{-\beta (r_e - r_e)} \right]^2 = 0.
+\end{equation}
+So we find that for the Morse potential the dissociation energy is equal to the constant $D$
+\begin{equation}
+D_e = D.
+\end{equation}
+
+The second derivative of the Morse potential is given by
+\begin{equation}
+\begin{split}
+\frac{d^2 V(r)}{dr^2} = &  2 D \beta \frac{d}{dr} \left[1 - e^{-\beta (r - r_e)} \right] e^{-\beta (r - r_e)} \\
+= & 2 D \beta \left[ \beta e^{-2\beta (r - r_e)}  - \beta  \left[1 - e^{-\beta (r - r_e)} \right] e^{-\beta (r - r_e)}\right] \\
+= & 2 D \beta^2  \left[ 2e^{-2 \beta (r - r_e)} - e^{-\beta (r - r_e)}\right].
+\end{split}
+\end{equation}
+The force constant for the Morse potential is the second derivative evaluated at the equilibrium bond distance, $r = r_e$
+\begin{equation}
+k = \left. \frac{d^2 V(r)}{dr^2} \right|_{r = r_e} =  2 D \beta^2.
+\end{equation}
 
 
 
