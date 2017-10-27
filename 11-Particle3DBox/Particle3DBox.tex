@@ -1,0 +1,247 @@
+% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/
+% or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% !TEX TS-program = xelatex
+
+\documentclass[../Main/chem331-notes.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{10}
+
+\section{The particle in a three-dimensional box}
+\subsection{The Schr\"{o}dinger equation in three dimensions}
+How do we generalize the Schr\"{o}dinger equation to more than one dimension, say in three dimensions?
+A point in three dimensions is specified by a vector $\mathbf{r} = (x,y,z)$.
+Wave functions for particles that move in three dimensions will then have to depend on all of these three variables
+\begin{equation}
+\psi(x) \rightarrow \psi(x,y,z).
+\end{equation}
+The wave function $\psi(x,y,z)$ is now a complex function that depends on multiple variables.
+As we will see, this introduces several complications that will require some advanced mathematical techniques.
+
+Operators for a particle in three dimensions will also become vectors.
+For example, the position operator $\hat{x}$ becomes
+\begin{equation}
+\hat{x} \rightarrow \hat{\mathbf{r}} = (\hat{x}, \hat{y}, \hat{z}),
+\end{equation}
+where $\hat{x}$, $\hat{y}$, and $\hat{z}$ are position operators for the x, y, and z axes, respectively.
+Similarly, the momentum operator will become a vector
+\begin{equation}
+\hat{p} \rightarrow \hat{\mathbf{p}} =  (\hat{p}_{x}, \hat{p}_{y}, \hat{p}_{z})
+= \left(-i\hbar\frac{\partial}{\partial x}, -i\hbar\frac{\partial}{\partial y}, -i\hbar\frac{\partial}{\partial z}\right).
+\end{equation}
+When we write the kinetic energy operator in three dimensions we have to keep into account that it comes from the square of the momentum operator vector
+\begin{equation}
+\hat{T} = \frac{\hat{\mathbf{p}}^2}{2m}
+= \frac{\hat{\mathbf{p}} \cdot \hat{\mathbf{p}}}{2m} 
+= \frac{\hat{p}_{x}^2 + \hat{p}_{y}^2 + \hat{p}_{z}^2}{2m} 
+= -\frac{\hbar^2}{2m}
+\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \right) = -\frac{\hbar^2}{2m}\nabla^2.
+\end{equation}
+Here we have expanded the square of the momentum operator as we would do with any vector by summing the square of each component.
+In the last term we have written the kinetic operator using the Laplacian operator.\mnote{
+The Laplacian is the sum of partial second derivatives, $\nabla^2 = \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}$. In other words, the Laplacian is the divergence ($\nabla \cdot$) of the gradient $\nabla$, that is $\nabla^2 = \nabla \cdot \nabla$.}
+
+The total Hamiltonian in three dimension is the sum of the kinetic operator plus a potential operator that depends on all thee coordinates ($\hat{V}(x,y,z)$)
+\begin{iequation}
+\hat{H} = -\frac{\hbar^2}{2m}
+\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \right) + \hat{V}(x,y,z).
+\end{iequation}
+
+\subsection{A theorem on separable Hamiltonians}
+How can we deal with the Hamiltonian in three dimensions?
+Here we will take a look at a method that allows us to simplify the solution of problems in more than one dimension when the Hamiltonian is \textbf{separable}.
+Consider the simpler case of a particle in two dimensions $(x,y)$ and suppose that the Hamiltonian is separable into two Hamiltonians that depend on only one of these two variables
+\begin{equation}
+\hat{H} = \hat{H}_x + \hat{H}_y. 
+\end{equation}
+In this case, if we know how to solve the Schr\"{o}dinger equation for each individual Hamiltonian $\hat{H}_x$ and $\hat{H}_y$, then we can easily find the solutions to the full Hamiltonian $\hat{H}$.
+Suppose that we know the eigenvalues/eigenfunctions of $\hat{H}_x$ and $\hat{H}_y$
+\begin{align}
+\hat{H}_x \psi_x(x) &= E_x \psi_x(x), \\
+\hat{H}_y \psi_y(y) &= E_y \psi_y(y),
+\end{align}
+then the eigenvalue ($E$) and eigenfunction [$\psi(x,y)$] of the full Hamiltonian $\hat{H}$ are given by
+\begin{align}
+E &= E_x + E_y, \\
+\psi(x,y) &= \psi_x(x) \psi_y(y).
+\end{align}
+
+To see that $\psi(x,y) = \psi_x(x) \psi_y(y)$ is an eigenfunction of the full Hamiltonian we plug it in the Schr\"{o}dinger equation
+\begin{equation}
+\begin{split}
+\hat{H} \psi(x,y) =& \hat{H}  \psi_x(x) \psi_y(y) \\
+ =& (\hat{H}_x + \hat{H}_y)\psi_x(x) \psi_y(y) \\
+=& \hat{H}_x\psi_x(x) \underbrace{\psi_y(y)}_{\text{independent of } x} + \hat{H}_y\psi_x(x) \psi_y(y) \\
+=& \psi_y(y) \underbrace{\hat{H}_x\psi_x(x)}_{E_x\psi_x(x)} + \psi_x(x) \hat{H}_y \psi_y(y) \\
+=& E_x \psi_y(y)\psi_x(x) + E_y \psi_x(x)  \psi_y(y) \\
+=& (E_x + E_y) \psi_x(x)  \psi_y(y) = (E_x + E_y) \psi(x,y).
+\end{split}
+\end{equation}
+In the end we find out that $\psi(x,y) = \psi_x(x) \psi_y(y)$ is indeed an eigenfunction of the Hamiltonian and that the corresponding eigenvalue is $E_x + E_y$.
+
+\subsection{The particle in a three-dimensional box}
+Now we are ready to study the case of a particle in a three-dimensional box.
+We will assume that the box is rectangular and has edge lengths equal to $L_x$, $L_y$, and $L_z$.
+In this case, the potential operator is given by
+\begin{equation}
+\hat{V}(x,y,z)  =
+\begin{cases}
+0 & \text{if}\quad 0 \leq x \leq L_x, 0 \leq y \leq L_y, 0 \leq z \leq L_z \\
+\infty & \text{otherwise}.
+\end{cases}
+\end{equation}
+The wave function also has to satisfy the following condition
+\begin{equation}
+\psi(x,y,z) = 0 \quad \text{for } (x,y,z) \text{ outside the box},
+\end{equation}
+and by demanding that the wave function is continuous we obtain the boundary condition
+\begin{equation}
+\psi(x,y,z) = 0 \quad \text{for } (x,y,z) \text{ on the borders of the box}.
+\end{equation}
+When can then focus only on what happens inside the box and write the Hamiltonian
+\begin{equation}
+\hat{H} = -\frac{\hbar^2}{2m}
+\left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \right) = \hat{T}_x + \hat{T}_y + \hat{T}_z,
+\end{equation}
+where $\hat{T}_x$ is the kinetic energy operator for a particle in the $x$ dimension.
+Note that this Hamiltonian separates into three independent terms,  $\hat{T}_x$, $\hat{T}_y$, and $\hat{T}_z$, of which we know eigenvalues and eigenfunctions.
+In the case of the $x$ coordinate we have the eigenfunctions [$\psi_{n_x}(x)$] and eigenvalues ($E_{n_x}$)
+\begin{equation}
+\begin{split}
+\psi_{n_x}(x) &= \sqrt{\frac{L_x}{2}} \sin \left(\frac{n_x \pi x}{L_x}\right) \\
+E_{n_x} &= \frac{h^2 n_x^2}{8mL_x^2},
+\end{split}
+\end{equation}
+where $n_x = 1, 2, \ldots$ is the particle in a box quantum number for the $x$ dimension.
+Similar equations can be written for the $y$ and $z$ components of the Hamiltonian.
+
+If we apply the theorem on separable Hamiltonians we get that the total wave function is the product of solutions for the $x$, $y$, and $z$ directions
+\begin{iequation}
+\begin{split}
+\psi_{n_x,n_y,n_z}(x,y,z) =&  \psi_{n_x}(x) \psi_{n_y}(y) \psi_{n_z}(z) \\
+=& \sqrt{\frac{8}{L_x L_y L_z}}  \sin \left(\frac{n_x \pi x}{L_x}\right)  \sin \left(\frac{n_y \pi y}{L_y}\right)  \sin \left(\frac{n_z \pi z}{L_z}\right),
+\end{split}
+\end{iequation}
+while the total energy is given by
+\begin{iequation}
+E_{n_x,n_y,n_z} = E_{n_x} + E_{n_y} + E_{n_z} = \frac{h^2}{8m} \left( 
+\frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} + \frac{n_z^2}{L_z^2} \right).
+\end{iequation}
+
+\subsection{Energy levels of a cubic box and degeneracy}
+For a cubic box
+\begin{equation}
+L_x = L_y = L_z = L
+\end{equation}
+and the energy expression simplifies to
+\begin{iequation}
+E_{n_x,n_y,n_z} = \frac{h^2}{8mL^2} (n_x^2 + n_y^2 + n_z^2) = E_1 (n_x^2 + n_y^2 + n_z^2),
+\end{iequation}
+where $E_1$ is the \textbf{energy of the lowest state of the particle in a 1D box} of length $L$.
+
+The lowest energy level for the particle in a 3D cube is
+\begin{equation}
+E_{1,1,1} = \frac{h^2}{8mL^2} (1^2 + 1^2 + 1^2) = 3 E_1.
+\end{equation}
+The next level is
+\begin{equation}
+E_{2,1,1} =  E_1 (2^2 + 1^2 + 1^2) = 6 E_1.
+\end{equation}
+Note that this state is degenerate with two other states since
+\begin{equation}
+E_{2,1,1} = E_{1,2,1} = E_{1,1,2} = 6 E_1.
+\end{equation}
+We say that the level $6 E_1$ is triply degenerate.
+These states have the same energy but their wave functions are different.
+This can be easily seen by comparing them. For example, 
+\begin{equation}
+\psi_{2,1,1}(x,y,z) =  \psi_{2}(x) \psi_{1}(y) \psi_{1}(z),
+\end{equation}
+while
+\begin{equation}
+\psi_{1,2,1}(x,y,z) =  \psi_{1}(x) \psi_{2}(y) \psi_{1}(z).
+\end{equation}
+These two wave functions are distinct and are not related via a phase factor.
+However, note that if we perform the following coordinate transformation
+\begin{equation}
+x \rightarrow y, \quad
+y \rightarrow x, \quad
+z \rightarrow z,
+\end{equation}
+on the function $\psi_{1,2,1}(x,y,z)$ we obtain
+\begin{equation}
+\psi_{1,2,1}(y,x,z) = \psi_{2}(x) \psi_{1}(y) \psi_{1}(z) = \psi_{2,1,1}(x,y,z).
+\end{equation}
+So, the two functions are related by a geometry transformation, in this case a rotation around the $z$ axis.
+This point illustrates the fact that the degeneracy of these states arises from the symmetry of the problem that we are trying to solve.
+The cube can be rotated in several ways, and all these transformations leave the potential unchanged.
+As a consequence, some states are degenerate and their wave functions are related via a geometric transformation.
+
+The particle in a 3D box also has states with degeneracy equal to six.
+Consider the state
+\begin{equation}
+E_{3,2,1} =  E_1 (3^2 + 2^2 + 1^2) = 14 E_1.
+\end{equation}
+There are six permutations of the numbers $1, 2, 3$, and this means that there are  six different states with energy equal to $14 E_1$
+\begin{equation}
+E_{3,2,1} = E_{3,1,2} = E_{2,1,3} = E_{2,3,1} = E_{1,2,3} = E_{1,3,2} = 14 E_1.
+\end{equation}
+
+Note that some levels are \textbf{accidentally degenerate}.
+For example, the levels $E_{3,3,3}$ and $E_{5,1,1}$ have the same energy:
+\begin{equation}
+E_{3,3,3} =  E_1 (3^2 + 3^2 + 3^2) = 27 E_1,
+\end{equation}
+\begin{equation}
+E_{5,1,1} =  E_1 (5^2 + 1^2 + 1^2) = 27 E_1.
+\end{equation}
+In this case we talk about degeneracy being accidental because the corresponding wave functions $\psi_{3,3,3}$ and $\psi_{5,1,1}$ cannot be transformed into each other by a symmetry operation (rotation, reflection, inversion).
+
+\subsection{Expectation value}
+To evaluate expectation values for a particle in a box we just need to generalize the definition given previously.
+For a generic wave function $\psi(x,y,z)$ and an operator $\hat{A}$, the expectation value of $\hat{A}$ is given by
+\begin{equation}
+\int_0^{L_x} dx \int_0^{L_y} dy \int_0^{L_z} dz \, \psi^*(x,y,z) \hat{A} \psi(x,y,z).
+\end{equation}
+Note that whenever an integrand can be factorized into a product, then we can perform each integral independently, for example
+\begin{equation}
+\int_0^{L_x} dx \int_0^{L_y} dy \int_0^{L_z} dz \, f(x) g(y) h(z)
+= \left[ \int_0^{L_x} dx \, f(x)\right] \times \left[ \int_0^{L_y} dy \, g(y) \right] \times \left[  \int_0^{L_z} dz \, h(z) \right].
+\end{equation}
+
+For example, say we want to compute the average value of $r^2 = x^2 + y^2 + z^2$ for the state 
+$\psi_{2,1,1}(x,y,z) =  \psi_{2}(x) \psi_{1}(y) \psi_{1}(z)$.
+First we can split the 3-dimensional integral into three pieces
+% =  \psi_{2}(x) \psi_{1}(y) \psi_{1}(z),
+%$
+\begin{equation}
+\langle x^2 + y^2 + z^2 \rangle = \langle x^2 \rangle + \langle y^2 \rangle + \langle z^2 \rangle.
+\end{equation}
+Next, we use the fact that the wave function is factorized and orthonormality of the wave functions to simplify these expressions. For example,
+\begin{equation}
+\begin{split}
+\langle x^2 \rangle
+& =
+\int_0^{L_x} dx \int_0^{L_y} dy \int_0^{L_z} dz \,\psi_{2,1,1}^*(x,y,z) x^2 \psi_{2,1,1}(x,y,z) \\
+& = \left[ \int_0^{L_x} dx \, \psi_{2}^*(x) x^2 \psi_{2}(x) \right]
+\times \underbrace{\left[ \int_0^{L_y} dy \, | \psi_{1}(y)|^2 \right]}_{=1}
+\times \underbrace{\left[  \int_0^{L_z} dz \, |\psi_{1}(z)|^2 \right]}_{=1} \\
+& = \int_0^{L_x} dx \, \psi_{2}^*(x) x^2 \psi_{2}(x).
+\end{split}
+\end{equation}
+Repeating the same derivation for the $y^2$ and $z^2$ integrals we arrive at the simple result
+\begin{equation}
+\langle x^2 + y^2 + z^2 \rangle =
+\int_0^{L_x} dx \, \psi_{2}^*(x) x^2 \psi_{2}(x)
++ \int_0^{L_y} dy \, \psi_{1}^*(y) y^2 \psi_{1}(y)
++ \int_0^{L_z} dz \, \psi_{1}^*(z) z^2 \psi_{1}(z).
+\end{equation}
+This shows that the average of $x^2 + y^2 + z^2$ for the particle in a 3D box is just the sum of the individual averages for each degree of freedom. 
+\end{document}
+
+
+
+
+
