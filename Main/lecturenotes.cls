@@ -183,4 +183,13 @@ linewidth=2pt]{eBox}
 
 \newcounter{mnotecount}
 \renewcommand\themnotecount{$^{\arabic{mnotecount}}$}
-\newcommand\mnote[1]{\refstepcounter{mnotecount}$^{\arabic{mnotecount}}$\marginpar{\setstretch{0.9}\themnotecount \textmd{\footnotesize{#1}}}}
+\newcommand\mnote[1]{
+	\refstepcounter{mnotecount}$^{\arabic{mnotecount}}$\marginpar{
+		\setstretch{0.9}\themnotecount\textmd{\footnotesize{#1}}
+	}
+}
+\newcommand\mfigure[1]{
+	\marginpar{
+		\setstretch{0.9}\themnotecount\textmd{\footnotesize{#1}}
+	}
+}
