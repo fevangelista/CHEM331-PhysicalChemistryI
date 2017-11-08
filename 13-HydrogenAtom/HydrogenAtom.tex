@@ -1,0 +1,141 @@
+% This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+% To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/
+% or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+% !TEX TS-program = xelatex
+
+\documentclass[../Main/chem331-notes.tex]{subfiles}
+\begin{document}
+
+\setcounter{section}{12}
+
+\section{The hydrogen atom}
+\subsection{The classical Coulomb potential}
+In our treatment of the hydrogen atom we will start by assuming that the proton is fixed in space and we will only consider the wave function of the electron. The potential experienced by the electron orbiting around the proton is then
+\begin{equation}
+V(x,y,z) = - \frac{1}{4 \pi \epsilon_0} \frac{e^2}{r}
+\end{equation}
+where $\epsilon_0$ is the vacuum permittivity.
+For convenience we will switch right away to atomic units, for which the term
+\begin{equation}
+\frac{e^2}{4 \pi \epsilon_0} = 1 \quad \text{(in atomic units)}.
+\end{equation}
+This leaves us with the much simpler form for the potential
+\begin{equation}
+V(x,y,z) = - \frac{1}{r}.
+\end{equation}
+
+\subsection{The Hamiltonian}
+The Hamiltonian of the hydrogen atom in Cartesian coordinates is given by
+\begin{equation}
+\hat{H} = -\frac{1}{2} \nabla^2 - \frac{1}{r} = -\frac{1}{2} \left(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2} \right) - \frac{1}{\sqrt{x^2 + y^2 + z^2}},
+\end{equation}
+and as we have seen before, it is more convenient to write it in spherical coordinates as
+\begin{equation}
+\hat{H} =  -\frac{1}{2} \left[ \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial }{\partial r} \right)
++ \frac{1}{r^2 \sin \theta} \frac{\partial}{\partial \theta} \left( \sin\theta \frac{\partial }{\partial \theta} \right)
++ \frac{1}{r^2 \sin^2 \theta} \frac{\partial^2}{\partial \phi^2} \right]  - \frac{1}{r}.
+\end{equation}
+Part of this Hamiltonian are related to angular momentum.
+In spherical coordinates the angular momentum squared operator ($\hat{L}^2$) is given by the following equation (note that there is an imiplicit $\hbar^2$ factor that  goes away when we write $\hat{L}^2$ in atomic units)
+\begin{equation}
+\hat{L}^2 = - \left[\frac{1}{ \sin \theta} \frac{\partial}{\partial \theta} \left( \sin\theta \frac{\partial }{\partial \theta} \right)
++ \frac{1}{ \sin^2 \theta} \frac{\partial^2}{\partial \phi^2} \right].
+\end{equation}
+Using the definition of $\hat{L}^2$ in spherical coordinates it is possible to write the Hamiltonian in a more compact way
+\begin{equation}
+\hat{H} =  -\frac{1}{2} \left[ \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial }{\partial r} \right)
+- \frac{\hat{L}^2}{r^2}  \right]  - \frac{1}{r}.
+\end{equation}
+To find the eigenvalues and eigenfunctions of $\hat{H}$ we attempt to write the solution in a factorized form
+\begin{equation}
+\psi(r,\theta,\phi) = R(r) Y_l^m(\theta,\phi),
+\end{equation}
+where $R(r)$ is the \textbf{radial wave function} and $Y_l^m(\theta,\phi)$ is a spherical harmonic.
+If we plug this guess into the Schr\"{o}dinger equation we get
+\begin{equation}
+\begin{split}
+\hat{H}\psi(r,\theta,\phi) & =  -\frac{1}{2} \left[ \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial }{\partial r} \right)
+- \frac{\hat{L}^2}{r^2}  \right]R(r) Y_l^m(\theta,\phi)  - \frac{R(r) Y_l^m(\theta,\phi)}{r} \\
+& = -\frac{1}{2} Y_l^m(\theta,\phi) \left[ \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial  }{\partial r} \right)
+- \frac{l(l+1)}{r^2}  \right] R(r)  - \frac{R(r) Y_l^m(\theta,\phi)}{r} \\
+& = E R(r) Y_l^m(\theta,\phi).
+\end{split}
+\end{equation}
+Note that all the operator components that act on $\theta$ and $\phi$ are contained in the $\hat{L}^2$ operator. Since $Y_l^m(\theta,\phi)$ is an eigenfunction of $\hat{L}^2$, in the second step we were able to replace $\hat{L}^2Y_l^m(\theta,\phi)$ with $l(l+1)Y_l^m(\theta,\phi)$.
+Since $Y_l^m(\theta,\phi)$ multiplies both sides of this equation, we can remove this factor and obtain an equation for the radial wave function alone
+\begin{equation}
+\Big[\underbrace{
+ -\frac{1}{2r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial  }{\partial r} \right)
+ }_{\text{kinetic}}
++ \underbrace{
+\frac{l(l+1)}{2r^2} - \frac{1}{r}
+}_{\text{potential}}
+\Big] R(r) = E R(r).
+\end{equation}
+We can identify two contributions to this equation. The first one contains derivatives with respect to $r$ and can be associated with the kinetic energy.
+The second term
+ \begin{equation}
+V_l(r) = \frac{l(l+1)}{2r^2} - \frac{1}{r},
+\end{equation}
+can be considered an effective Coulomb potential. It contains the correct $- r^{-1}$ term that we expect from the classical Coulomb potential plus a term proportional to $r^{-2}$.
+The latter, is due to angular momentum and counters the effect of Coulomb attraction.
+Since the effective potential depends on $l$, we have to solve a different radial Schr\"{o}dinger equation for each value of $l$.
+
+Note that the radial equation is sometimes expressed as a function of the variable
+\begin{equation}
+\rho = 2r,
+\end{equation}
+so that the left hand side can be written as\mnote{
+$\frac{\partial}{\partial r} = \frac{\partial\rho}{\partial r} \frac{\partial}{\partial \rho} = \frac{2}{n} \frac{\partial}{\partial \rho}$.
+}
+\begin{equation}
+-\frac{1}{2r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial  }{\partial r} \right) + \frac{l(l+1)}{2r^2} - \frac{1}{r}
+= -2 \frac{\partial^2}{\partial \rho^2}
+-\frac{4}{\rho} \frac{\partial}{\partial \rho} + 2\frac{l(l+1)}{\rho^2} - \frac{2}{\rho},
+\end{equation}
+and can be used to write the Schr\"{o}dinger equation as
+\begin{equation}
+\left[
+-\frac{\partial^2 }{\partial \rho^2}
+-\frac{2}{\rho}\frac{\partial }{\partial \rho}
+-\frac{1}{\rho} + \frac{l(l+1)}{\rho^2} \right] R(\rho) = E' R(\rho),
+\end{equation}
+where the energy $E' = E / 2$.
+
+The eigenvalues corresponding to this equation are
+\begin{equation}
+E'_n = - \frac{1}{4 n^2},
+\end{equation}
+and the corresponding eigenfunctions are
+\begin{equation}
+R_{n,l}(\rho) = \sqrt{\left(\frac{2}{n} \right)^{3} \frac{ (n-l-1)! }{ 2n (n+l)!} }\left(\frac{\rho}{n}\right)^l e^{-\rho/2n} L_{n+l}^{2l+1}(\rho/n),
+\end{equation}
+%\begin{equation}
+%R_{n,l}(r) = N_{n,l} \left(\frac{\rho}{n}\right)^l L_{n,l}(\rho) e^{-\rho/2n},
+%\end{equation}
+where $n$ is the \textbf{principal quantum number} and can take the following values
+\begin{equation}
+n = 1, 2, 3, \ldots
+\end{equation}
+The quantity $L_{n+l}^{2l+1}(x)$ indicates \textbf{associated Laguerre polynomials}.
+Converting from $\rho$ to $r$ we can write the radial equation in an equivalent way as
+\begin{equation}
+R_{n,l}(r) = \sqrt{\frac{ (n-l-1)! }{ 2n (n+l)!} } \left(\frac{2}{n} \right)^{l + 3/2} r^l e^{-r/n} L_{n+l}^{2l+1}(2r/n).
+\end{equation}
+The first few associated Laguerre polynomials are
+\begin{equation}
+\begin{split}
+L_0^\alpha(x) & = 1 \\
+L_1^\alpha(x) & = \alpha - x + 1 \\
+L_2^\alpha(x) & = \frac{x^2}{2} - (\alpha + 2) x + \frac{(\alpha + 2)(\alpha + 1)}{2}.
+\end{split}
+\end{equation}
+
+
+\end{document}
+
+
+
+
+
