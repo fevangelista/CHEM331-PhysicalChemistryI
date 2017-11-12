@@ -9,7 +9,7 @@
 
 \setcounter{section}{12}
 
-\section{The hydrogen atom}
+\section{The hydrogen atom (incomplete)}
 \subsection{The classical Coulomb potential}
 In our treatment of the hydrogen atom we will start by assuming that the proton is fixed in space and we will only consider the wave function of the electron. The potential experienced by the electron orbiting around the proton is then
 \begin{equation}
@@ -49,21 +49,21 @@ Using the definition of $\hat{L}^2$ in spherical coordinates it is possible to w
 \end{equation}
 To find the eigenvalues and eigenfunctions of $\hat{H}$ we attempt to write the solution in a factorized form
 \begin{equation}
-\psi(r,\theta,\phi) = R(r) Y_l^m(\theta,\phi),
+\psi(r,\theta,\phi) = R(r) Y_l^{m_l}(\theta,\phi),
 \end{equation}
-where $R(r)$ is the \textbf{radial wave function} and $Y_l^m(\theta,\phi)$ is a spherical harmonic.
+where $R(r)$ is the \textbf{radial wave function} and $Y_l^{m_l}(\theta,\phi)$ is a spherical harmonic.\mnote{To follow the conventional scheme to label the solution of the hydrogen atom here we use the symbol $m_l$ instead of $m$.}
 If we plug this guess into the Schr\"{o}dinger equation we get
 \begin{equation}
 \begin{split}
 \hat{H}\psi(r,\theta,\phi) & =  -\frac{1}{2} \left[ \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial }{\partial r} \right)
-- \frac{\hat{L}^2}{r^2}  \right]R(r) Y_l^m(\theta,\phi)  - \frac{R(r) Y_l^m(\theta,\phi)}{r} \\
-& = -\frac{1}{2} Y_l^m(\theta,\phi) \left[ \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial  }{\partial r} \right)
-- \frac{l(l+1)}{r^2}  \right] R(r)  - \frac{R(r) Y_l^m(\theta,\phi)}{r} \\
-& = E R(r) Y_l^m(\theta,\phi).
+- \frac{\hat{L}^2}{r^2}  \right]R(r) Y_l^{m_l}(\theta,\phi)  - \frac{R(r) Y_l^{m_l}(\theta,\phi)}{r} \\
+& = -\frac{1}{2} Y_l^{m_l}(\theta,\phi) \left[ \frac{1}{r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial  }{\partial r} \right)
+- \frac{l(l+1)}{r^2}  \right] R(r)  - \frac{R(r) Y_l^{m_l}(\theta,\phi)}{r} \\
+& = E R(r) Y_l^{m_l}(\theta,\phi).
 \end{split}
 \end{equation}
-Note that all the operator components that act on $\theta$ and $\phi$ are contained in the $\hat{L}^2$ operator. Since $Y_l^m(\theta,\phi)$ is an eigenfunction of $\hat{L}^2$, in the second step we were able to replace $\hat{L}^2Y_l^m(\theta,\phi)$ with $l(l+1)Y_l^m(\theta,\phi)$.
-Since $Y_l^m(\theta,\phi)$ multiplies both sides of this equation, we can remove this factor and obtain an equation for the radial wave function alone
+Note that all the operator components that act on $\theta$ and $\phi$ are contained in the $\hat{L}^2$ operator. Since $Y_l^{m_l}(\theta,\phi)$ is an eigenfunction of $\hat{L}^2$, in the second step we were able to replace $\hat{L}^2Y_l^{m_l}(\theta,\phi)$ with $l(l+1)Y_l^{m_l}(\theta,\phi)$.
+Since $Y_l^{m_l}(\theta,\phi)$ multiplies both sides of this equation, we can remove this factor and obtain an equation for the radial wave function alone
 \begin{equation}
 \Big[\underbrace{
  -\frac{1}{2r^2} \frac{\partial}{\partial r} \left( r^2 \frac{\partial  }{\partial r} \right)
@@ -103,18 +103,18 @@ and can be used to write the Schr\"{o}dinger equation as
 \end{equation}
 where the energy $E' = E / 2$.
 
-The eigenvalues corresponding to this equation are
-\begin{equation}
-E'_n = - \frac{1}{4 n^2},
-\end{equation}
-and the corresponding eigenfunctions are
+The eigenvalues corresponding to a radial wave function are given by
+\begin{iequation}
+E_n = - \frac{1}{2 n^2}  \, \mathrm{Hartree},
+\end{iequation}
+in atomic units (1 Hartree = 627.51 ) and the corresponding eigenfunctions are
 \begin{equation}
 R_{n,l}(\rho) = \sqrt{\left(\frac{2}{n} \right)^{3} \frac{ (n-l-1)! }{ 2n (n+l)!} }\left(\frac{\rho}{n}\right)^l e^{-\rho/2n} L_{n+l}^{2l+1}(\rho/n),
 \end{equation}
 %\begin{equation}
 %R_{n,l}(r) = N_{n,l} \left(\frac{\rho}{n}\right)^l L_{n,l}(\rho) e^{-\rho/2n},
 %\end{equation}
-where $n$ is the \textbf{principal quantum number} and can take the following values
+where $n$ is called the \textbf{principal quantum number} and can take the following values
 \begin{equation}
 n = 1, 2, 3, \ldots
 \end{equation}
@@ -132,6 +132,53 @@ L_2^\alpha(x) & = \frac{x^2}{2} - (\alpha + 2) x + \frac{(\alpha + 2)(\alpha + 1
 \end{split}
 \end{equation}
 
+The first few radial wave functions are
+\begin{equation}
+\begin{split}
+R_{1,0}(r) & = 2 e^{-r}, \\
+R_{2,0}(r) & =\frac{2 - r}{2 \sqrt{2}} e^{-r/2}, \\
+R_{2,1}(r) & =\frac{r}{2 \sqrt{6}} e^{-r/2}, \\
+R_{3,0}(r) & =\frac{27 - 18 r + 2 r^2}{81 \sqrt{3}} e^{-r/3}.
+\end{split}
+\end{equation}
+
+\subsection{Quantum numbers and degeneracy}
+Combining the results of the previous section we can write the wave function of the hydrogen atom in terms of three quantum numbers
+\begin{equation}
+\psi_{nlm_l}(r,\theta,\phi) = R_{nl}(r) Y_l^{m_l}(\theta,\phi),
+\end{equation}
+The principal quantum number $n$ is a positive integer and is connected to the total energy of a quantum state. 
+In addition to the principal quantum number $n$ the wave function depends on the \textbf{angular momentum quantum number} $l$.  The allowed values of this quantum number are
+\begin{iequation}
+l = 0, 1, \ldots, n-1,
+\end{iequation}
+and it determines the total angular momentum squared of the hydrogen atom since
+\begin{equation}
+\langle \hat{L}^2 \rangle = \hbar^2 l(l + 1).
+\end{equation}
+In the convention used to label states of the hydrogen atom we assign symbols to different values of $l$. For $l = 0$ we label the state as $s$, $l = 1$ corresponds to $p$, $l= 2$ to $d$, and $l = 3$ to $f$. After $l=3$ we use letters in alphabetical order ($g$, $h$, $i$,\ldots).
+The \textbf{magnetic quantum number} $m_l$ can take any of the following values
+\begin{iequation}
+m = 0, \pm 1, \pm 2,  \ldots, l.
+\end{iequation}
+For each value of $l$ there are $2l +1$ possible values of $m_l$. 
+The magnetic quantum number is related to the projection of angular momentum on the $z$ axis
+\begin{equation}
+\langle \hat{L}_z \rangle = \hbar m_l.
+\end{equation}
+
+The states of the hydrogen atom are usually written as $nl$, using the corresponding symbol for $l$.
+For example, the ground state ($n=0$, $l=0$) is designated $1s$. The state ($n=1$, $l=0$) is indicates with $2s$. The state ($n=2$, $l=1$) corresponds to $2p$ and ($n=3$, $l=2$) to $3d$.
+
+Since the energy depends only on the quantum number $n$, states with different values of $l$ and $m_l$ but same $n$ will be degenerate.
+For each value of $l$ there are $2l +1$ possible values of $m_l$. If we sum up all the possible states for a fixed $l$ we have that the total number of states for a given $n$ is equal to\mnote{Here we use the equation for the sum of the first $n$ integers, $\sum_{k = 1}^{n} k = 1+2+\ldots + n = n (n+1) / 2 $.}
+\begin{equation}
+\text{Degeneracy of level } n = \sum_{l = 0}^{n-1} (2l +1) = 2 \sum_{l = 0}^{n-1} l + \sum_{l = 0}^{n-1} 1
+= 2 \frac{(n - 1) n}{2} + n = n^2.
+\end{equation}
+
+\subsection{Eigenfunctions of the hydrogen atom}
+See next update to these notes.
 
 \end{document}
 
