@@ -181,9 +181,9 @@ The magnetic quantum number is related to the projection of angular momentum on 
 \end{equation}
 
 The states of the hydrogen atom are usually written as $nl$, using the corresponding symbol for $l$.
-For example, the ground state ($n=0$, $l=0$) is designated 1s. The state ($n=1$, $l=0$) is indicates with 2s. The state ($n=2$, $l=1$) corresponds to 2p and ($n=3$, $l=2$) to 3d.
-In addition, we also label orbitals with the value of $m_l$ placed as a subscript.
-For example, the 2p level comprises the orbitals 2p$_{-1}$, 2p$_{0}$, and 2p$_{1}$. Another example is the state 3d$_{-1}$, which corresponds to $n = 3$, $l = 2$ (for d), and $m_l = -1$.
+For example, the ground state ($n=1$, $l=0$) is designated 1s. The state ($n=2$, $l=0$) is indicates with 2s. The state ($n=2$, $l=1$) corresponds to 2p and ($n=3$, $l=2$) to 3d.
+In addition, we may also label individual orbitals by adding a subscript that indicates the value of $m_l$.
+For example, the 2p level is comprised of the orbitals 2p$_{-1}$, 2p$_{0}$, and 2p$_{1}$. Another example is the state 3d$_{-1}$, which corresponds to $n = 3$, $l = 2$, and $m_l = -1$.
 
 Since the energy depends only on the quantum number $n$, states with different values of $l$ and $m_l$ but same $n$ will be degenerate.
 For each value of $l$ there are $2l +1$ possible values of $m_l$. If we sum up all the possible states for a fixed $l$ we have that the total number of states for a given $n$ is equal to\mnote{Here we use the equation for the sum of the first $n$ integers, $\sum_{k = 1}^{n} k = 1+2+\ldots + n = n (n+1) / 2 $.}
@@ -456,9 +456,9 @@ For example, the two degenerate states corresponding to $n = 1$
 \psi_{1,0,0,\frac{1}{2}}(r,\theta,\phi,\sigma) & = \frac{1}{\sqrt{\pi}} e^{-r} \alpha(\sigma), \\
 \psi_{1,0,0,-\frac{1}{2}}(r,\theta,\phi,\sigma) & = \frac{1}{\sqrt{\pi}} e^{-r} \beta(\sigma),
 \end{align}
-are orthogonal because their spin parts are different
+are orthogonal because their spin parts are different and integrate to zero
 \begin{equation}
-\int \psi_{1,0,0,\frac{1}{2}}^* \psi_{1,0,0,-\frac{1}{2}} \, \underbrace{d\mathbf{r}}_{dx dy dz} d\sigma = 
+\int \psi_{1,0,0,\frac{1}{2}}^*(\mathbf{r}) \psi_{1,0,0,-\frac{1}{2}}(\mathbf{r}) \, \underbrace{d\mathbf{r}}_{dx dy dz} d\sigma = 
 \int \frac{1}{\pi} e^{-2r} d\mathbf{r} \times  \underbrace{\int  \alpha^*(\sigma)\beta(\sigma) d\sigma}_{0}  = 0.
 \end{equation}
 \end{document}
