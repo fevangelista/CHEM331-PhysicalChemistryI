@@ -31,7 +31,6 @@
 \RequirePackage{marginnote}
 \RequirePackage{hyperref}
 \RequirePackage{booktabs}
-%\RequirePackage{tocloft}
 
 % Set fonts
 \setmainfont{Adobe Caslon Pro}
@@ -39,8 +38,6 @@
 \titleformat*{\section}{\LARGE\headingfont}
 \titleformat*{\subsection}{\normalsize\headingfont}
 \renewcommand{\maketitlehooka}{\headingfont}
-%\renewcommand{\cftchapfont}{\normalfont\sffamily}   
-%\renewcommand{\cftsecfont}{\normalfont\sffamily}   
 \captionsetup[figure]{margin=0pt,font=small,labelfont=bf,name=Fig.}
 
 %
