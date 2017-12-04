@@ -105,10 +105,10 @@ where the energy $E' = E / 2$.
 
 The solution of the radial equation is quite involved and we will jump directly to the solution. The eigenvalues ($E_n$ of the radial equation are given by
 \begin{iequation}
-E_n = - \frac{1}{2 n^2}  \, \mathrm{a.u.},
+E_n = - \frac{1}{2 n^2}  \, E_\mathrm{h},
 \end{iequation}
-with the energy being expressed in atomic units (1 Hartree = 627.51 kcal mol$^{-1}$).
-The same expression in SI is
+with the energy being expressed in Hartree (symbol $E_\mathrm{h}$), the unit of measure of energy in atomic units. (1 $E_\mathrm{h}$ = 627.51 kcal mol$^{-1}$ = 27.211 eV).
+The same expression in SI units is
 \begin{equation}
 E_n = - \frac{m_e e^4}{32 \pi^2\epsilon_0^2 \hbar^2 n^2} \, \mathrm{J}.
 \end{equation}
@@ -324,12 +324,6 @@ If we plug in this integral we get
 \langle r \rangle_{1\mathrm{s}} = 4 \int_{0}^{\infty} \, e^{-2r} r^3 \, dr = 4 \frac{3!}{2^4} = 4 \frac{2 \cdot 3}{16} = \frac{3}{2} a_0.
 \end{equation}
 
-\marginpar{
-\includegraphics[width=1.5in]{../Figures/HydrogenAtom/WhereIsElectron.pdf}
-\captionof{figure}{Ground state wave function of the hydrogen atom. (a) Radial wave function and (b) radial probability distribution.}
-\label{fig:hydrogenatom:whereiselectron}
-}
-
 To summarize, for the ground state of the hydrogen atom we have that
 \begin{ibox}
 \begin{myitems}
@@ -338,6 +332,12 @@ To summarize, for the ground state of the hydrogen atom we have that
 \item The \textbf{average radius} of the electron is $\frac{3}{2} a_0$ ($\langle r \rangle_{1\mathrm{s}}$). This is larger than the most likely radius.
 \end{myitems}
 \end{ibox}
+
+\marginpar{
+\includegraphics[width=1.5in]{../Figures/HydrogenAtom/WhereIsElectron.pdf}
+\captionof{figure}{Ground state wave function of the hydrogen atom. (a) Radial wave function and (b) radial probability distribution.}
+\label{fig:hydrogenatom:whereiselectron}
+}
 
 \subsection{Angular momentum and magnetic moment}
 From classical electromagnetism we know that a magnetic dipole ($\boldsymbol{\mu}$) in a magnetic field ($\mathbf{B}$) has an energy equal to
